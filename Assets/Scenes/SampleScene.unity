@@ -2681,9 +2681,9 @@ MonoBehaviour:
   SyncPositionX: 1
   SyncPositionY: 1
   SyncPositionZ: 1
-  SyncRotAngleX: 0
-  SyncRotAngleY: 0
-  SyncRotAngleZ: 0
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
   SyncScaleX: 0
   SyncScaleY: 0
   SyncScaleZ: 0
@@ -2691,7 +2691,7 @@ MonoBehaviour:
   RotAngleThreshold: 0.01
   ScaleThreshold: 0.01
   InLocalSpace: 0
-  Interpolate: 1
+  Interpolate: 0
 --- !u!1 &2101158536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,6 +2901,10 @@ PrefabInstance:
     - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
       propertyPath: LogLevel
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
+      propertyPath: NetworkConfig.TickRate
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
       propertyPath: NetworkConfig.PlayerPrefab
