@@ -7,16 +7,6 @@ public class PlayerController : NetworkBehaviour
 {
     [SerializeField]
     SpriteRenderer playerAvatar;
-    [ServerRpc]
-    private void MoveCharacterServerRpc(Vector3 force)
-    {
-        MoveCharacterClientRpc(force);
-    }
-    [ClientRpc]
-    private void MoveCharacterClientRpc(Vector3 force)
-    {
-        MoveCharacter(force);
-    }
     private void Start()
     {
         if (OwnerClientId == 0)
@@ -28,11 +18,8 @@ public class PlayerController : NetworkBehaviour
         {
             playerAvatar.color = Color.red;
             transform.position = new Vector3(6.5f, 0, 0);
-
         }
-
     }
-
     private void Update()
     {
         if (!IsOwner) return;
@@ -41,10 +28,16 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKey("s")) forceToAdd.y -= 1;
         if (Input.GetKey("a")) forceToAdd.x -= 1;
         if (Input.GetKey("d")) forceToAdd.x += 1;
-        if(forceToAdd!=Vector3.zero) MoveCharacterServerRpc(forceToAdd);
+        if (forceToAdd != Vector3.zero) MoveCharacterServerRpc(forceToAdd);
     }
     private void MoveCharacter(Vector3 force)
     {
         GetComponent<Rigidbody2D>().AddForce(force);
+    }
+
+    [ServerRpc]
+    private void MoveCharacterServerRpc(Vector3 force)
+    {
+        MoveCharacter(force);
     }
 }
