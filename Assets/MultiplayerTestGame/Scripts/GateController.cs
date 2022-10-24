@@ -33,12 +33,12 @@ public class GateController : NetworkBehaviour
     }
     private void ResetGame()
     {
-        if (NetworkManager.Singleton.ConnectedClientsList.Count < 2) return;
-        NetworkObject player0 = NetworkManager.Singleton.ConnectedClientsList[0].PlayerObject;
-        NetworkObject player1 = NetworkManager.Singleton.ConnectedClientsList[1].PlayerObject;
-
-        ResetObject(player0, new Vector3(-6.5f, 0, 0));
-        ResetObject(player1, new Vector3(6.5f, 0, 0));
+        IReadOnlyList<NetworkClient> playerList = NetworkManager.Singleton.ConnectedClientsList;
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            if (i % 2 == 1) ResetObject(playerList[i].PlayerObject, new Vector3(-6.5f, 0, 0));
+            else ResetObject(playerList[i].PlayerObject, new Vector3(6.5f, 0, 0));
+        }
         ResetObject(ball.GetComponent<NetworkObject>(), Vector3.zero);
     }
 }

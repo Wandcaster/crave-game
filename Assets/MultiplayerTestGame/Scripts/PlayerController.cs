@@ -7,23 +7,31 @@ public class PlayerController : NetworkBehaviour
 {
     [SerializeField]
     SpriteRenderer playerAvatar;
+    Vector3 forceToAdd;
     private void Start()
     {
-        if (OwnerClientId == 0)
+
+
+        if (OwnerClientId %2==1)
         {
-            playerAvatar.color = Color.blue;
-            transform.position = new Vector3(-6.5f, 0, 0);
+            InitPlayer(new Vector3(-6.5f, 0, 0),Color.blue);
         }
         else
         {
-            playerAvatar.color = Color.red;
-            transform.position = new Vector3(6.5f, 0, 0);
+            InitPlayer(new Vector3(6.5f, 0, 0), Color.red);
         }
     }
+
+    private void InitPlayer(Vector3 position,Color color)
+    {
+        playerAvatar.color = color;
+        transform.position = position;
+    }
+
     private void Update()
     {
         if (!IsOwner) return;
-        Vector3 forceToAdd = new Vector3();
+        forceToAdd = Vector3.zero;  
         if (Input.GetKey("w")) forceToAdd.y += 1;
         if (Input.GetKey("s")) forceToAdd.y -= 1;
         if (Input.GetKey("a")) forceToAdd.x -= 1;
