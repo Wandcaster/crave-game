@@ -89,7 +89,6 @@ using NetworkEvent = Unity.Networking.Transport.NetworkEvent;
             // The .GetComponent method returns a UTP NetworkDriver (or a proxy to it)
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(ipv4address, port, allocationIdBytes, key, connectionData, true);
             NetworkManager.Singleton.StartHost();
-            joinCodeTextField.transform.parent.gameObject.SetActive(false);
             yield return null;
         }
         public static async Task<(string ipv4address, ushort port, byte[] allocationIdBytes, byte[] connectionData, byte[] hostConnectionData, byte[] key)> JoinRelayServerFromJoinCode(string joinCode)
@@ -114,9 +113,9 @@ using NetworkEvent = Unity.Networking.Transport.NetworkEvent;
         }
         IEnumerator Example_ConfigreTransportAndStartNgoAsConnectingPlayer()
         {
-            // Populate RelayJoinCode beforehand through the UI
+        // Populate RelayJoinCode beforehand through the UI
             var clientRelayUtilityTask = JoinRelayServerFromJoinCode(joinCodeTextField.text);
-
+            Debug.Log(joinCodeTextField.text);
             while (!clientRelayUtilityTask.IsCompleted)
             {
                 yield return null;
@@ -146,7 +145,8 @@ using NetworkEvent = Unity.Networking.Transport.NetworkEvent;
         }
         public void Join()
         {
-            StartCoroutine(Example_ConfigreTransportAndStartNgoAsConnectingPlayer());
+        if (joinCodeTextField.text.Length < 6) return;
+        StartCoroutine(Example_ConfigreTransportAndStartNgoAsConnectingPlayer());
         }
     }
 
