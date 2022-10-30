@@ -1,3 +1,4 @@
+using PlayerManagement;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -5,31 +6,27 @@ using UnityEngine;
 
 public class SessionManager : NetworkSingleton<SessionManager>
 {
-    public ulong player0 = 2;
-    public ulong player1 = 2;
-
-    [ServerRpc(RequireOwnership =false)]
-    public void SetPlayerServerRpc(ulong player, int id)
+    [Header("Config")]
+    [SerializeField]
+    NetworkManager networkManager;
+    [SerializeField]
+    string characterSelectSceneName;
+    [SerializeField]
+    string mainMenuSceneName;
+    [Header("Data")]
+    public string joinCode;
+    private void Start()
     {
-        if (id == 0)
-        {
-            if (player == player1) player1 = 2;
-            player0 = player;
-        }
-        else
-        {
-            if (player == player0) player0 = 2;
-            player1 = player;
-        }
+        DontDestroyOnLoad(this);
+        networkManager.OnServerStarted += ServerStart;
+        networkManager.OnClientDisconnectCallback += ServerStop;
     }
-    [ServerRpc(RequireOwnership = false)]
-    public void StartGameServerRpc()
+    private void ServerStart()
     {
-        if (player0 != 2 && player1 != 2 && player0 != player1) StartGameClientRpc();
+        networkManager.SceneManager.LoadScene(characterSelectSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
-    [ClientRpc]
-    private void StartGameClientRpc()
+    private void ServerStop(ulong id)
     {
-        Debug.LogError("Start Game");
+        if(IsHost) networkManager.SceneManager.LoadScene(mainMenuSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 }

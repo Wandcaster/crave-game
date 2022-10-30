@@ -23,9 +23,6 @@ using NetworkEvent = Unity.Networking.Transport.NetworkEvent;
 
         [SerializeField]
         TMP_InputField joinCodeTextField;
-        [SerializeField]
-        TextMeshProUGUI joinCode;
-
         async void Example_AuthenticatingAPlayer()
         {
             try
@@ -85,7 +82,7 @@ using NetworkEvent = Unity.Networking.Transport.NetworkEvent;
             var (ipv4address, port, allocationIdBytes, connectionData, key, joinCode) = serverRelayUtilityTask.Result;
 
             // Display the join code to the user.
-            this.joinCode.text = joinCode;
+            SessionManager.Instance.joinCode = joinCode;
             // The .GetComponent method returns a UTP NetworkDriver (or a proxy to it)
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(ipv4address, port, allocationIdBytes, key, connectionData, true);
             NetworkManager.Singleton.StartHost();
