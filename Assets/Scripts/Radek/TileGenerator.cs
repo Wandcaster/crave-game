@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TileGenerator : MonoBehaviour
 {
-    [SerializeField] public float range;//range between furthest left and furthest right
+    [SerializeField] public float range;//remaining range between furthest left and furthest right
     [SerializeField] public int forceMultiplePaths;//-1 -> random multiple paths (up to 2)
 
     public IEnumerator Generate(GameObject eventPrefab, int remainingDepth, Transform parent, string name)//eventPrefab is already instantiated
@@ -23,15 +23,19 @@ public class TileGenerator : MonoBehaviour
 
 
 
-        if (remainingDepth > 0) StartCoroutine(
-            eventPrefab.GetComponent<TileGenerator>().Generate(
-                Instantiate(eventPrefab, parent), remainingDepth, parent, name + remainingDepth.ToString()
-                ));
+        if (remainingDepth > 0)
+        {
+            StartCoroutine(eventPrefab.GetComponent<TileGenerator>().Generate(
+            Instantiate(eventPrefab, parent), remainingDepth, parent, name + remainingDepth.ToString()
+            ));
+            this.gameObject.GetComponent<RandomizePosition>().enabled = true;
+
+        }
     }
 
     private void MovePrefab(Transform currentPos)
     {
-        Debug.Log(MapManager.distanceY);
+//        Debug.Log(MapManager.distanceY);
         currentPos.position = new Vector3(
             currentPos.position.x,
             currentPos.position.y + MapManager.distanceY,

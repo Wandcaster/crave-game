@@ -43,6 +43,7 @@ public class GenerateRandomEvent : MonoBehaviour
     //TODO: generowanie eventow po wcisnieciu/zmiana sceny
     private void StartEvent()
     {
+        Debug.Log("click");
         eventClicked = true;
     }
 
