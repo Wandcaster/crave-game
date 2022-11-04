@@ -29,21 +29,18 @@ public class GenerateRandomEvent : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         if (eventClicked == true) return;
-        if(PossibleMove()) StartEvent();
+
+            MapManager.Instance.ChangeCurrentTile(gameObject);
+            StartEvent();
     
     }
 
-    //TODO: zabezpieczenie poruszania na skos
-    private bool PossibleMove()
-    {
 
-        return true;
-    }
 
     //TODO: generowanie eventow po wcisnieciu/zmiana sceny
     private void StartEvent()
     {
-        Debug.Log("click");
+        Debug.Log("click"+gameObject.name);
         eventClicked = true;
     }
 
@@ -66,7 +63,10 @@ public class GenerateRandomEvent : MonoBehaviour
     }
 
 
-    
+    public void AddConnection(GameObject obj)
+    {
+        connections.Add(obj);
+    }
 
 
 
