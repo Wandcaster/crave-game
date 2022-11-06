@@ -503,9 +503,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkManager: {fileID: 2110480252}
   characterSelectSceneName: PlayerSelect
+  MapSceneName: Map
   mainMenuSceneName: MainMenu
-  playerSelector: {fileID: 0}
   joinCode: 
+  seed: 0
+  p1Character: 2
+  p2Character: 2
 --- !u!4 &226072798
 Transform:
   m_ObjectHideFlags: 0
@@ -1865,6 +1868,18 @@ PrefabInstance:
       propertyPath: NetworkConfig.PlayerPrefab
       value: 
       objectReference: {fileID: 1760961184852989734, guid: b22ad57bdca36e440bc5753df6f79c07, type: 3}
+    - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Prefab
+      value: 
+      objectReference: {fileID: 5686269356392182924, guid: de780d81076510540a688e610cbd8f55, type: 3}
+    - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Override
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 999527984314296003, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
       propertyPath: m_ProtocolType
       value: 1

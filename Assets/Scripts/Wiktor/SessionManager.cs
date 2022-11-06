@@ -12,9 +12,15 @@ public class SessionManager : NetworkSingleton<SessionManager>
     [SerializeField]
     string characterSelectSceneName;
     [SerializeField]
+    string MapSceneName;
+    [SerializeField]
     string mainMenuSceneName;
     [Header("Data")]
     public string joinCode;
+    public int seed;
+    public PlayableCharacterType p1Character = PlayableCharacterType.None;
+    [SerializeField]
+    public PlayableCharacterType p2Character = PlayableCharacterType.None;
     private void Start()
     {
         DontDestroyOnLoad(this);
@@ -28,5 +34,17 @@ public class SessionManager : NetworkSingleton<SessionManager>
     private void ServerStop(ulong id)
     {
         if(IsHost) networkManager.SceneManager.LoadScene(mainMenuSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
+    public void StartGame()
+    {
+        SyncSeedClientRpc(Random.Range(1, 1000));
+        networkManager.SceneManager.LoadScene(MapSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        
+    }
+    [ClientRpc]
+    private void SyncSeedClientRpc(int seed)
+    {
+        this.seed = seed;
+        Random.InitState(seed);
     }
 }

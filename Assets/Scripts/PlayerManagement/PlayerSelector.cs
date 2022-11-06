@@ -145,8 +145,8 @@ namespace PlayerManagement {
         [SerializeField] private Image KuroScreenImage;
         [SerializeField] private Image ShiroScreenImage;
         private Vector3 restPoint;
-        private PlayableCharacterType p1Character = PlayableCharacterType.None;
-        private PlayableCharacterType p2Character = PlayableCharacterType.None;
+        public PlayableCharacterType p1Character = PlayableCharacterType.None;
+        public PlayableCharacterType p2Character = PlayableCharacterType.None;
         private bool cancelJump = false;
         private float ballWidth => P1Ball.rectTransform.rect.width;
         private const float margin = 10f;

@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class MapManager : MonoBehaviour
+public class MapManager : NetworkBehaviour
 {
     public static MapManager Instance { get; private set; }
 
@@ -15,6 +16,7 @@ public class MapManager : MonoBehaviour
     [SerializeField] public int seperatePaths = 2;
     [SerializeField] public float range = 9;
     [SerializeField] GameObject player;
+    public List<GenerateRandomEvent> tiles= new List<GenerateRandomEvent>();
 
     //line renderer colors
     private Color availablePathColor = new Color(255, 0, 0);
@@ -40,6 +42,8 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tiles.Add(startPosition.GetComponent<GenerateRandomEvent>());
+        tiles.Add(bossTilePosition.GetComponent<GenerateRandomEvent>());
         distanceY = bossTilePosition.transform.position.y - startPosition.transform.position.y;//radius for each tile is 0.5; distance for all tiles
 //        distanceY -= (depthLv*0.5f);
         distanceY = (distanceY) / (depthLv+1);//keep in mind that if radius is increased then some may overlap; distance between 2 tiles
@@ -66,6 +70,7 @@ public class MapManager : MonoBehaviour
         for (int i = 0; i < seperatePaths; i++)
         {
             GameObject tmp = Instantiate(eventPrefab, this.gameObject.transform);
+            tiles.Add(tmp.GetComponent<GenerateRandomEvent>());
             tmp.transform.position = new Vector3(
                 leftLimit+i*range/seperatePaths,
             tmp.transform.position.y, tmp.transform.position.z);
@@ -120,19 +125,29 @@ public class MapManager : MonoBehaviour
             tmp.connections[i].GetComponent<CircleCollider2D>().enabled = state;
         }
     }
-
     public void ChangeCurrentTile(GameObject clicked)
     {
-        currentTile.GetComponent<LineRenderer>().startColor = closedPathColor;
-        currentTile.GetComponent<LineRenderer>().endColor = closedPathColor;
+        ChangeLineRendererClientRpc(tiles.IndexOf(currentTile.GetComponent<GenerateRandomEvent>()), closedPathColor);
         ChangeTileState(false);
         currentTile = clicked;
 
+        SetPlayersPosClientRpc(clicked.transform.position);
 
-        player.transform.position = clicked.transform.position;
-        currentTile.GetComponent<LineRenderer>().startColor = availablePathColor;
-        currentTile.GetComponent<LineRenderer>().endColor = availablePathColor;
+        ChangeLineRendererClientRpc(tiles.IndexOf(currentTile.GetComponent<GenerateRandomEvent>()), availablePathColor);
         ChangeTileState(true);
+    }
+    [ClientRpc]
+    private void SetPlayersPosClientRpc(Vector3 pos)
+    {
+        player.transform.position = pos;
+    }
+    [ClientRpc]
+    private void ChangeLineRendererClientRpc(int tileID,Color color)
+    {
+        Debug.Log(tileID);
+        LineRenderer line = tiles[tileID].GetComponent<LineRenderer>();
+        line.startColor = color;
+        line.endColor = color;
     }
 
 }

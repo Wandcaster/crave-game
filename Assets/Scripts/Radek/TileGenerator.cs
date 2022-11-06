@@ -31,7 +31,7 @@ public class TileGenerator : MonoBehaviour
             
             GameObject obj = Instantiate(eventPrefab, parent);
             //gameObject.GetComponent<GenerateRandomEvent>().AddConnection(obj);
-
+            MapManager.Instance.tiles.Add(obj.GetComponent<GenerateRandomEvent>());
             StartCoroutine(eventPrefab.GetComponent<TileGenerator>().Generate(
             obj, remainingDepth, parent, name + remainingDepth.ToString()
             ));
