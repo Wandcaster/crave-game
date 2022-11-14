@@ -16,14 +16,14 @@ public class GenerateRandomEvent : MonoBehaviour
     [SerializeField] public EventType eventType;
     [SerializeField] public List<GameObject> connections;
     [SerializeField] public bool eventClicked;
-
+    [SerializeField] public bool isBossFight = false;
 
 
 
     void Start()
     {
         connections = new List<GameObject>();
-        RandomEvent();
+        if(!isBossFight)RandomEvent();
     }
 
     private void OnMouseUpAsButton()
@@ -46,6 +46,7 @@ public class GenerateRandomEvent : MonoBehaviour
 
     private void RandomEvent()
     {
+        //if (eventClicked) return;//if eventclicked is true then do not generate another event with different sprite
 
         int t = UnityEngine.Random.Range(0, enumSize - 1);
         eventType = (EventType) t;//it'll never get us boss fight -> range is: 0 to eventSize-1
@@ -59,6 +60,26 @@ public class GenerateRandomEvent : MonoBehaviour
     {
         //Debug.Log(type);
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        switch (type)
+        {
+            case EventType.fight:
+                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Map/bitwa2");
+                break;
+            case EventType.fullyrandom:
+                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Map/znak_zapytania") as Sprite;
+                break;
+            case EventType.rest:
+                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Map/odpoczynek") as Sprite;
+                break;
+            case EventType.bossfight:
+                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Map/walka_z_bossem3") as Sprite;
+                break;
+            default:
+                spriteRenderer.sprite = Resources.Load<Sprite>("Sprites/Map/start") as Sprite;
+                break;
+        }
+
+
 //        spriteRenderer.sprite = newSprite;
     }
 
