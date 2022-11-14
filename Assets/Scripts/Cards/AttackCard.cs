@@ -8,11 +8,11 @@ public class AttackCard : ICard
     List<Effect> effect;
     private void OnMouseEnter()
     {
-        GetComponent<Animator>().SetTrigger("MouseEnter");
+        GetComponent<Animator>().SetBool("MouseHover",true);
     
     }
     private void OnMouseExit()
     {
-        GetComponent<Animator>().SetTrigger("MouseExit");
+        GetComponent<Animator>().SetBool("MouseHover",false);
     }
 }
