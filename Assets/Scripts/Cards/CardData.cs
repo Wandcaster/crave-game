@@ -8,5 +8,5 @@ public class CardData : ScriptableObject
     public string cardName;
     public string descrition;
     public int useCosts;
-    public Texture2D image;
+    public Sprite image;
 }

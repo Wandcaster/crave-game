@@ -36,7 +36,7 @@ public abstract class ICard:MonoBehaviour
             cardData.useCosts = value;
         }
     }
-    public Texture2D image
+    public Sprite image
     {
         get
         {
