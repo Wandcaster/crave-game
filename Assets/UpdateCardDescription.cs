@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpdateCardDescription : MonoBehaviour
 {
-    [SerializeField] public SpriteRenderer image;
+    [SerializeField] public Image image;
     [SerializeField] public TMPro.TextMeshProUGUI cardName;
     [SerializeField] public TMPro.TextMeshProUGUI description ;
     [SerializeField] public TMPro.TextMeshProUGUI cost ;

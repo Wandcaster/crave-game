@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weakness : Effect
 {
-    public override void ApplyEffect(GameObject target)
+    public override void ApplyEffect(Characteristics target)
     {
         int tempInCelsius = 0;
         string text=tempInCelsius < 20.0 ? "Cold." : "Perfect!";

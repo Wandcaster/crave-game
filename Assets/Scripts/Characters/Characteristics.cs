@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Characteristics : MonoBehaviour
+public class Characteristics : NetworkBehaviour
 {
     [SerializeField] public int hp=1;
     [SerializeField] public int maxHp;
