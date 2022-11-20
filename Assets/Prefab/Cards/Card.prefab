@@ -720,7 +720,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardData: {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
-  effect: []
+  effect:
+  - {fileID: 0}
 --- !u!212 &8661407882224195062
 SpriteRenderer:
   m_ObjectHideFlags: 0

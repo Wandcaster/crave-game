@@ -5,12 +5,9 @@ using UnityEngine;
 
 public class Characteristics : NetworkBehaviour
 {
-    [SerializeField] public int hp=1;
-    [SerializeField] public int maxHp;
-    //    [SerializeField] public int energy;
-    //    [SerializeField] public int maxEnergy;
-
-    [SerializeField] public string name;
+    public int hp;
+    public int maxHp;
+    public string name;
 
     private void Start()
     {

@@ -5,7 +5,12 @@ using UnityEngine;
 public class EnemyManager : NetworkSingleton<EnemyManager>
 {
     public List<EnemyController> enemyControllers= new List<EnemyController>();
-    [SerializeField] private List<EnemyController> avalableEnemys; 
+    [SerializeField] private List<EnemyController> avalableEnemys;
+    private void Start()
+    {
+        FightController.Instance.EnemyTurn.AddListener(EnemysActions);
+
+    }
     public void RespawnEnemys(int count)
     {
         for (int i = 0; i < count; i++)
@@ -13,9 +18,14 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
             enemyControllers.Add(Instantiate(avalableEnemys[Random.Range(0, avalableEnemys.Count)],null));
         }
     }
+    private void EnemysActions()
+    {
+        foreach (var enemy in enemyControllers)
+        {
+            enemy.DefaultAction();
+        }
+        FightController.Instance.HandDraw.Invoke();
+    }
 }
-//Przeciwnicy jako scriptableObject
-//Button od koñca tury
-//Efekty jako scriptableObject
 //Karty
 //

@@ -20,6 +20,9 @@ public class PlayerController : Characteristics
     }
     public void DrawCard()
     {
+        turnEnded = false;
+        discarded.AddRange(hand);
+        hand.Clear();
         for (int i = 0; i < drawCardsInHand; i++)
         {
             Draw();
@@ -31,12 +34,13 @@ public class PlayerController : Characteristics
         int cardID = UnityEngine.Random.Range(0, draw.Count);
         ICard newCard = draw[cardID];
         hand.Add(newCard);
-        draw.RemoveAt(cardID);
+        draw.Remove(newCard);
 
     }
     private void Shuffle()
     {
-        draw = discarded;
+        draw.AddRange(discarded);
+        discarded.Clear();
         ICard temp;
         for (int i = 0; i < draw.Count; i++)
         {
@@ -46,5 +50,9 @@ public class PlayerController : Characteristics
             draw[randomIndex] = temp;
         }
     }
-
+    public void EndTurn()
+    {
+        turnEnded= true;
+        FightController.Instance.EndTurn.Invoke();
+    }
 }

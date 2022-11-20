@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class EnemyController : EnemyBehaviour
 {
-    public List<Effect> Attacks;
+    public EnemyData enemyData;
+    public List<Effect> Attacks
+    {
+        get { return enemyData.Attacks; }
+    }
     private void Start()
     {
-        FightController.Instance.EnemyTurn.AddListener(DefaultAction);
+        InitData();
     }
     public override void BattleStartAction()
     {
@@ -28,5 +32,12 @@ public class EnemyController : EnemyBehaviour
         Effect effect= Attacks[Random.Range(0,Attacks.Count)];
         Characteristics target = FightController.Instance.playerControllers[Random.Range(0, FightController.Instance.playerControllers.Count)];
         effect.ApplyEffect(target);
+    }
+    private void InitData()
+    {
+        damage = enemyData.damage;
+        name= enemyData.name;
+        maxHp= enemyData.maxHp;
+        appearance= enemyData.appearance;
     }
 }
