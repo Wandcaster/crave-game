@@ -6,14 +6,23 @@ public class Card : ICard
 {
     [SerializeField]
     List<Effect> effect;
-    private void OnMouseEnter()
+    [SerializeField]
+    PlayerController cardOwner;
+    private void Start()
     {
-        GetComponent<Animator>().SetBool("MouseHover",true);
+        cardOwner=FindObjectOfType<PlayerController>();
     }
-    private void OnMouseExit()
+    private void OnTriggerStay2D(Collider2D other)
     {
-        GetComponent<Animator>().SetBool("MouseHover",false);
+        if (other.GetComponent<EnemyController>() != null && Input.GetButtonUp("Fire1"))
+        {
+            PlayCard(other.GetComponent<EnemyController>());
+            cardOwner.discarded.Add(this);
+            cardOwner.hand.Remove(this);
+            gameObject.SetActive(false);
+        }
     }
+
     private void PlayCard(Characteristics target)
     {
         foreach (var effect in effect)
@@ -21,5 +30,5 @@ public class Card : ICard
             effect.ApplyEffect(target);
         }
     }
-
+    //Rozbiæ animacje skalowania oraz chowania karty na osobne
 }

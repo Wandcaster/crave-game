@@ -11,12 +11,21 @@ public class PlayerController : Characteristics
     [SerializeField] public List<ICard> draw;//available to draw
     [SerializeField] public List<ICard> hand;//cards in hand
     [SerializeField] public List<ICard> discarded;//used/discarded cards
+    [SerializeField] private GameObject deckFolder;
 
-
+    [SerializeField] List<Transform> CardPos;
     private void Awake()
     {
         maxEnergy = energy;
         FightController.Instance.HandDraw.AddListener(DrawCard);
+        DontDestroyOnLoad(gameObject);
+    }
+    private void Start()
+    {
+        for (int i = 0; i < draw.Count; i++)
+        {
+            draw[i] = Instantiate(draw[i], deckFolder.transform);
+        }
     }
     public void DrawCard()
     {
@@ -35,7 +44,12 @@ public class PlayerController : Characteristics
         ICard newCard = draw[cardID];
         hand.Add(newCard);
         draw.Remove(newCard);
-
+        ShowCard(newCard);
+    }
+    private void ShowCard(ICard card)
+    {
+        card.gameObject.SetActive(true);
+        card.transform.position = CardPos[hand.Count-1].position;
     }
     private void Shuffle()
     {

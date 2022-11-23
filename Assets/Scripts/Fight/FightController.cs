@@ -27,6 +27,7 @@ public class FightController : NetworkSingleton<FightController>
     private void StartBattle()
     {
         HandDraw.Invoke();
+        PlayerTurn.Invoke();
     }
     public void CheckEndTurn()
     {

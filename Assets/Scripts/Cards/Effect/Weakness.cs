@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 [CreateAssetMenu(fileName = "Weakness", menuName = "Cards/Effect/Weakness")]
 public class Weakness : Effect
 {

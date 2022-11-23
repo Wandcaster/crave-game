@@ -25,6 +25,8 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
             enemy.DefaultAction();
         }
         FightController.Instance.HandDraw.Invoke();
+        FightController.Instance.PlayerTurn.Invoke();
+
     }
 }
 //Karty
