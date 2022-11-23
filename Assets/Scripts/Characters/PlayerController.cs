@@ -22,6 +22,7 @@ public class PlayerController : Characteristics
     }
     private void Start()
     {
+        Debug.Log(status);
         for (int i = 0; i < draw.Count; i++)
         {
             draw[i] = Instantiate(draw[i], deckFolder.transform);

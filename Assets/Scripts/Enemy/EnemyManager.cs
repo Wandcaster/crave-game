@@ -8,10 +8,11 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
     [SerializeField] private List<EnemyController> avalableEnemys;
     private void Start()
     {
+        RespawnEnemies(1);
         FightController.Instance.EnemyTurn.AddListener(EnemysActions);
 
     }
-    public void RespawnEnemys(int count)
+    public void RespawnEnemies(int count)
     {
         for (int i = 0; i < count; i++)
         {

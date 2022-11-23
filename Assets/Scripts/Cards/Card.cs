@@ -31,4 +31,6 @@ public class Card : ICard
         }
     }
     //Rozbiæ animacje skalowania oraz chowania karty na osobne
+    //Dezaktywacja kart które nie zosta³y rzucone
+    //
 }

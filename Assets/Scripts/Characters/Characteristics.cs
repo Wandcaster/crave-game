@@ -12,16 +12,11 @@ public class Characteristics : NetworkBehaviour
     //status' duration in turns; pay in mind to calculate anything on target, not this.gameObject. Except CalculateDamage -> first calc damage on attacker, then take damage on defender
     public StatusEffects status;
 
-    private void Awake()
+    public Characteristics() 
     {
         status = new StatusEffects();
-    }
-
-    private void Start()
-    {
         maxHp = hp;
     }
-
     protected bool IsAlive()
     {
         if (hp > 0) return true;
