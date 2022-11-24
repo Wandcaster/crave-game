@@ -12,8 +12,9 @@ public class PlayerController : Characteristics
     [SerializeField] public List<ICard> hand;//cards in hand
     [SerializeField] public List<ICard> discarded;//used/discarded cards
     [SerializeField] private GameObject deckFolder;
+    [SerializeField] private float cardDistance = 3.0f;
+    [SerializeField] private float cardPositionY = -4;//middle card position
 
-    [SerializeField] List<Transform> CardPos;
     private void Awake()
     {
         maxEnergy = energy;
@@ -37,7 +38,23 @@ public class PlayerController : Characteristics
         {
             Draw();
         }
+        RepositionCards();
+        //ShowCards();
     }
+
+    private void RepositionCards()
+    {
+        float numberOfSpaces = hand.Count - 1;//i needed to give here float because with int i couldn't cast int to float, number of spaces between cards (all)
+        for(int i = 0; i < hand.Count; i++)
+        {
+            hand[i].transform.position = new Vector3(
+                (-numberOfSpaces/ 2)*cardDistance + i*cardDistance,
+                cardPositionY, 0);
+            ShowCard(hand[i]);
+        }
+
+    }
+
     private void Draw()
     {
         if (draw.Count == 0) Shuffle();
@@ -45,12 +62,12 @@ public class PlayerController : Characteristics
         ICard newCard = draw[cardID];
         hand.Add(newCard);
         draw.Remove(newCard);
-        ShowCard(newCard);
+        //ShowCard(newCard);
     }
     private void ShowCard(ICard card)
     {
         card.gameObject.SetActive(true);
-        card.transform.position = CardPos[hand.Count-1].position;
+        //card.transform.position = CardPos[hand.Count-1].position;
     }
     private void Shuffle()
     {
