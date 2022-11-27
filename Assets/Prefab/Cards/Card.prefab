@@ -723,7 +723,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardData: {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
   effect:
-  - {fileID: 11400000, guid: 67b4635bcf377a84f8cdf3004d6b2f50, type: 2}
+  - effectType: 0
+    strength: 5
+  - effectType: 1
+    strength: 1
   cardOwner: {fileID: 0}
 --- !u!212 &8661407882224195062
 SpriteRenderer:
