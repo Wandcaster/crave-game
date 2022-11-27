@@ -35,6 +35,7 @@ public class FightController : NetworkSingleton<FightController>
         {
             if (player.turnEnded == false) return;
         }
+        foreach (var player in playerControllers) player.status.DecreaseStatuses();
         EnemyTurn.Invoke();
     }
 

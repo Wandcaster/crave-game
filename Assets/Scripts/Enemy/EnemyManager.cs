@@ -25,6 +25,10 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
         {
             enemy.DefaultAction();
         }
+        foreach (var enemy in enemyControllers)
+        {
+            enemy.status.DecreaseStatuses();
+        }
         FightController.Instance.HandDraw.Invoke();
         FightController.Instance.PlayerTurn.Invoke();
 

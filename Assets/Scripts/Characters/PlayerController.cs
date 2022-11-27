@@ -32,6 +32,8 @@ public class PlayerController : Characteristics
     public void DrawCard()
     {
         turnEnded = false;
+        for (int i = 0; i < hand.Count; i++) hand[i].gameObject.SetActive(false);
+
         discarded.AddRange(hand);
         hand.Clear();
         for (int i = 0; i < drawCardsInHand; i++)
