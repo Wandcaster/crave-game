@@ -22,14 +22,7 @@ public class Characteristics : NetworkBehaviour
         if (hp > 0) return true;
         return false;
     }
-    protected  void DecreaseStatuses()
-    {
-        status.weakness = (status.weakness > 0) ? status.weakness - 1 : 0;
-        status.vulnerability = (status.vulnerability > 0) ? status.vulnerability - 1 : 0;
-        status.shield =0;
-        status.strength = (status.strength > 0) ? status.strength - 1 : 0;
-        status.bleeding = (status.bleeding > 0) ? status.bleeding - 1 : 0;     
-    }
+    
     //returns true is target is alive, returns false if target is dead
     public bool TakeDamage(int damage)
     {
@@ -61,11 +54,5 @@ public class Characteristics : NetworkBehaviour
     {
         if (status.bleeding != 0) heal = (int) (heal * StatusEffects.bleedingEfficiency);
         hp = (hp + heal > maxHp) ? maxHp : hp + heal;
-
     }
-
-    
-
-
-
 }
