@@ -2,20 +2,28 @@ using UnityEngine;
 
 public class DealDamage : Effect
 {
-    public override void ApplyEffect(Characteristics target)
+    public override void ApplyEffect(Characteristics target, Characteristics source)
     {
-        if (target.status.vulnerability != 0) strength = (int)(strength * StatusEffects.vulnerabilityEfficiency);
+        int tempStr = strength;
 
+        tempStr += source.status.strength;
+        if (target.status.vulnerability != 0) tempStr = (int)(tempStr * StatusEffects.vulnerabilityEfficiency);
+        
+        if (source.status.weakness != 0) tempStr= (int)(tempStr* StatusEffects.weaknessEfficiency);
+
+        //Debug.Log(tempStr);
+
+        //damage distribution on shield/hp
         if (target.status.shield != 0)
         {
-            if (target.status.shield > strength) { target.status.shield -= strength; }
+            if (target.status.shield > tempStr) { target.status.shield -= tempStr; tempStr = 0; }
             else
             {
-                strength -= target.status.shield;
+                tempStr -= target.status.shield;
                 target.status.shield = 0;
             }
         }
-        target.hp -= strength;
-        Debug.Log("DealDamage: " + strength);
+        target.hp -= tempStr;
+        Debug.Log("DealDamage: " + tempStr);
     }
 }

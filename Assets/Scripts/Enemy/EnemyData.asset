@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   damage: 1
-  appearance: {fileID: 0}
+  appearance: {fileID: 21300000, guid: e3fb2a99f8217c3429541c1c0b001fb3, type: 3}
   hp: 10
   maxHp: 10
-  name: Zombie
+  enemyName: 
   Attacks:
-  - {fileID: 11400000, guid: 67b4635bcf377a84f8cdf3004d6b2f50, type: 2}
+  - effectType: 0
+    strength: 2
+  - effectType: 2
+    strength: 3
+  scale: {x: 0.44, y: 0.44}
+  position: {x: 2.49, y: 2}

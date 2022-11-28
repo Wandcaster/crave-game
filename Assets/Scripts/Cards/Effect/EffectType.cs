@@ -1,7 +1,11 @@
 ﻿public enum EffectType
 {
     DealDamage,
-    Weakness
+    Weakness,
+    Vulnerability,
+    Shield,
+    Strength,
+    Bleeding
 }
 
 

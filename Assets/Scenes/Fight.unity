@@ -238,8 +238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  maxHp: 0
-  name: Player1
+  maxHp: 10
+  characteristicName: Nico
   status:
     weakness: 0
     vulnerability: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
     bleeding: 0
   energy: 3
   maxEnergy: 0
-  drawCardsInHand: 4
+  drawCardsInHand: 3
   turnEnded: 0
   draw:
   - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}
@@ -277,51 +277,6 @@ Transform:
   - {fileID: 1327907093}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &419547496
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 419547498}
-  - component: {fileID: 419547497}
-  m_Layer: 0
-  m_Name: Testing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &419547497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419547496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba1c1c9749e6572419430eb79670decb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 0
---- !u!4 &419547498
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419547496}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 560.116, y: 378.04718, z: -10.911138}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
@@ -1203,7 +1158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   maxHp: 0
-  name: Player0
+  characteristicName: 
   status:
     weakness: 0
     vulnerability: 0

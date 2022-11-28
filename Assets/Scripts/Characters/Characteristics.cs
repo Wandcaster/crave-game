@@ -4,7 +4,7 @@ public class Characteristics : NetworkBehaviour
 {
     public int hp;
     public int maxHp;
-    public string name;
+    public string characteristicName;
 
     //status' duration in turns; pay in mind to calculate anything on target, not this.gameObject. Except CalculateDamage -> first calc damage on attacker, then take damage on defender
     public StatusEffects status;
