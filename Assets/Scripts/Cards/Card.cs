@@ -19,23 +19,28 @@ public class Card : ICard
             item.effect.strength = item.strength;
         }
     }
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<EnemyController>() != null && Input.GetButtonUp("Fire1"))
+        //Debug.Log(Input.GetMouseButton(0));
+        if (other.GetComponent<EnemyController>() != null && !Input.GetMouseButton(0))
         {
             Debug.Log(other.name);
             PlayCard(other.GetComponent<EnemyController>());
             cardOwner.discarded.Add(this);
             cardOwner.hand.Remove(this);
             gameObject.SetActive(false);
+            cardOwner.RepositionCards();
         }
     }
+
+
+    
 
     private void PlayCard(Characteristics target)
     {
         foreach (var effect in effect)
         {
-            effect.effect.ApplyEffect(target);
+            effect.effect.ApplyEffect(target, cardOwner);
         }
     }
     //Rozbiæ animacje skalowania oraz chowania karty na osobne

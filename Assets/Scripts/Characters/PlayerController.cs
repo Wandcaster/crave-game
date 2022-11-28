@@ -16,7 +16,8 @@ public class PlayerController : Characteristics
 
     private void Awake()
     {
-        maxEnergy = energy;
+        energy = maxEnergy;
+        hp = maxHp;
         FightController.Instance.HandDraw.AddListener(DrawCard);
         DontDestroyOnLoad(gameObject);
     }
@@ -31,6 +32,7 @@ public class PlayerController : Characteristics
     public void DrawCard()
     {
         turnEnded = false;
+        energy = maxEnergy;
         for (int i = 0; i < hand.Count; i++) hand[i].gameObject.SetActive(false);
 
         discarded.AddRange(hand);
@@ -43,7 +45,7 @@ public class PlayerController : Characteristics
         //ShowCards();
     }
 
-    private void RepositionCards()
+    public void RepositionCards()
     {
         float numberOfSpaces = hand.Count - 1;//i needed to give here float because with int i couldn't cast int to float, number of spaces between cards (all)
         for(int i = 0; i < hand.Count; i++)

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 9186564517961979077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.61, y: 1.13, z: 0}
-  m_LocalScale: {x: 2.4849, y: 2.4849, z: 2.4849}
+  m_LocalScale: {x: 0.48, y: 0.48, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 1
   maxHp: 0
-  name: Doritos
+  characteristicName: 
+  status:
+    weakness: 0
+    vulnerability: 0
+    shield: 0
+    strength: 0
+    bleeding: 0
   damage: 0
   appearance: {fileID: 0}
   enemyData: {fileID: 11400000, guid: b3284ed1a4a063d42af49bc5627c64a3, type: 2}

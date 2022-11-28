@@ -9,8 +9,9 @@ public class EnemyData : ScriptableObject
     public Sprite appearance;
     public int hp;
     public int maxHp;
-    public string name;
-    public List<Effect> Attacks;
-
+    public string enemyName;
+    public List<EffectData> Attacks;
+    public Vector2 scale;
+    public Vector2 position;
 
 }
