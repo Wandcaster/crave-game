@@ -7,7 +7,11 @@ using UnityEngine;
 public class Card : ICard
 {
     [SerializeField]
-    public List<EffectData> effect;
+    public List<EffectData> effect
+    {
+        get { return cardData.effect; }
+        //set { cardData.effect = value; }
+    }
     [SerializeField]
     PlayerController cardOwner;
     private void Start()
@@ -16,7 +20,7 @@ public class Card : ICard
         foreach (var item in effect)
         {
             item.effect = (Effect)Activator.CreateInstance(Type.GetType(item.effectType.ToString()));
-            item.effect.strength = item.strength;
+            item.effect.efficiency = item.strength;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -26,9 +30,6 @@ public class Card : ICard
         {
             Debug.Log(other.name);
             PlayCard(other.GetComponent<EnemyController>());
-            cardOwner.discarded.Add(this);
-            cardOwner.hand.Remove(this);
-            gameObject.SetActive(false);
             cardOwner.RepositionCards();
         }
     }
@@ -38,10 +39,17 @@ public class Card : ICard
 
     private void PlayCard(Characteristics target)
     {
+        Debug.Log("Energy" + cardOwner.energy + "|:" + useCosts);
+        if (cardOwner.energy - useCosts < 0) return;
+        cardOwner.energy -= useCosts;
+
         foreach (var effect in effect)
         {
             effect.effect.ApplyEffect(target, cardOwner);
         }
+        cardOwner.discarded.Add(this);
+        cardOwner.hand.Remove(this);
+        gameObject.SetActive(false);
     }
     //Rozbiæ animacje skalowania oraz chowania karty na osobne
     //Dezaktywacja kart które nie zosta³y rzucone

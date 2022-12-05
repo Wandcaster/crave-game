@@ -15,7 +15,7 @@ public class EnemyController : EnemyBehaviour
         foreach (var item in Attacks)
         {
             item.effect = (Effect)Activator.CreateInstance(Type.GetType(item.effectType.ToString()));
-            item.effect.strength = item.strength;
+            item.effect.efficiency = item.strength;
         }
     }
     public override void BattleStartAction()
@@ -35,7 +35,10 @@ public class EnemyController : EnemyBehaviour
     private void RandomAttack()
     {
         EffectData effect= Attacks[UnityEngine.Random.Range(0,Attacks.Count)];
-        Characteristics target = FightController.Instance.playerControllers[UnityEngine.Random.Range(0, FightController.Instance.playerControllers.Count)];
+        Characteristics target;
+        if (EnemyManager.Instance.targetPriority != null) target = EnemyManager.Instance.targetPriority;
+        else target = FightController.Instance.playerControllers[UnityEngine.Random.Range(0, FightController.Instance.playerControllers.Count)];
+
         //Debug.Log(effect);
         //Debug.Log(target.name);
         effect.effect.ApplyEffect(target, this);

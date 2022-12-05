@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a03f262fd014dad488c7fab8b980f862, type: 3}
-  m_Name: Slice
+  m_Name: Transfer
   m_EditorClassIdentifier: 
-  cardName: Slice
-  descrition: Deal damage to target.
+  cardName: Transfer
+  descrition: Transfer 1 energy.
   useCosts: 1
   image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
   effect:
-  - effectType: 0
-    strength: 6
+  - effectType: 7
+    strength: 1

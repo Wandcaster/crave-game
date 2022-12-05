@@ -47,9 +47,4 @@ public class Characteristics : NetworkBehaviour
 
         return damage;
     }
-    public void Heal(int heal)
-    {
-        if (status.bleeding != 0) heal = (int) (heal * StatusEffects.bleedingEfficiency);
-        hp = (hp + heal > maxHp) ? maxHp : hp + heal;
-    }
 }

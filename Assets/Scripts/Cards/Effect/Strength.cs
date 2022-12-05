@@ -6,7 +6,7 @@ public class Strength : Effect
 {
     public override void ApplyEffect(Characteristics target, Characteristics source)
     {
-        target.status.strength += strength;
+        target.status.strength += efficiency;
         Debug.Log("Apply Strength on" + target.characteristicName);
     }
 }

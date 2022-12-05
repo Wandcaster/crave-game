@@ -5,7 +5,10 @@
     Vulnerability,
     Shield,
     Strength,
-    Bleeding
+    Bleeding,
+    Heal,
+    Transfer,
+    Aggro
 }
 
 

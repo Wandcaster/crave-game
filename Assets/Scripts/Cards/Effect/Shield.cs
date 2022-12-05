@@ -6,7 +6,7 @@ public class Shield : Effect
 {
     public override void ApplyEffect(Characteristics target, Characteristics source)
     {
-        target.status.shield += strength;
+        target.status.shield += efficiency;
         Debug.Log("Apply Shield on" + target.characteristicName);
     }
 }

@@ -246,9 +246,9 @@ MonoBehaviour:
     shield: 0
     strength: 0
     bleeding: 0
-  energy: 3
-  maxEnergy: 0
-  drawCardsInHand: 3
+  energy: 0
+  maxEnergy: 3
+  drawCardsInHand: 4
   turnEnded: 0
   draw:
   - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}

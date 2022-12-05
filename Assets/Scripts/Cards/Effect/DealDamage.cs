@@ -4,7 +4,7 @@ public class DealDamage : Effect
 {
     public override void ApplyEffect(Characteristics target, Characteristics source)
     {
-        int tempStr = strength;
+        int tempStr = efficiency;
 
         tempStr += source.status.strength;
         if (target.status.vulnerability != 0) tempStr = (int)(tempStr * StatusEffects.vulnerabilityEfficiency);
