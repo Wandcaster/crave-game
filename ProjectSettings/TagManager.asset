@@ -12,9 +12,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Card
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3195297501
+    locked: 0
   - name: Cards
     uniqueID: 1419341531
     locked: 0
