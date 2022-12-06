@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class EnemyBehaviour : Characteristics
 {
-    [SerializeField] public int damage=1;
+    public int damage;
+
+    public Sprite appearance;
 
     public abstract void DefaultAction();
     public abstract void BattleStartAction();

@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class Weakness : Effect
 {
-    public override void ApplyEffect(GameObject target)
+    public override void ApplyEffect(Characteristics target, Characteristics source)
     {
-        int tempInCelsius = 0;
-        string text=tempInCelsius < 20.0 ? "Cold." : "Perfect!";
-        throw new System.NotImplementedException();
+        target.status.weakness += efficiency;
+        Debug.Log("Apply Weakness on" + target.characteristicName);
     }
 }

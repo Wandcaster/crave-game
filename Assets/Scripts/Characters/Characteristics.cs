@@ -1,26 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Unity.Netcode;
 
-public class Characteristics : MonoBehaviour
+public class Characteristics : NetworkBehaviour
 {
-    [SerializeField] public int hp=1;
-    [SerializeField] public int maxHp;
-    //    [SerializeField] public int energy;
-    //    [SerializeField] public int maxEnergy;
+    public int hp;
+    public int maxHp;
+    public string characteristicName;
 
-    [SerializeField] public string name;
+    //status' duration in turns; pay in mind to calculate anything on target, not this.gameObject. Except CalculateDamage -> first calc damage on attacker, then take damage on defender
+    public StatusEffects status;
 
-    private void Start()
+    public Characteristics() 
     {
+        status = new StatusEffects();
         maxHp = hp;
     }
-
     protected bool IsAlive()
     {
         if (hp > 0) return true;
         return false;
     }
+    
+    //returns true is target is alive, returns false if target is dead
+    public bool TakeDamage(int damage)
+    {
+        if (status.vulnerability !=0) damage = (int)(damage * StatusEffects.vulnerabilityEfficiency);
 
+        if (status.shield != 0)
+        {
+            if(status.shield > damage) { status.shield -= damage;}
+            else
+            {
+                damage -= status.shield;
+                status.shield = 0;
+            }
+        }
+        hp -= damage;
+        return IsAlive();
+    }
 
+    //damage is card damage, damageMultiplayer is for enemy additional scaling
+    protected int CalculateDamage(int damage, float damageMultiplayer=1)
+    {
+        damage = (int) (damage*damageMultiplayer);
+        damage += status.strength;
+        if (status.weakness != 0) damage = (int)(damage * StatusEffects.weaknessEfficiency);
+
+        return damage;
+    }
 }

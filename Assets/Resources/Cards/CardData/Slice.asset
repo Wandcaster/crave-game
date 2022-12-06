@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Slice
   m_EditorClassIdentifier: 
   cardName: Slice
-  descrition: Deal damage to target
+  descrition: Deal damage to target.
   useCosts: 1
+  image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
+  effect:
+  - effectType: 0
+    strength: 6
