@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Weakness
   descrition: Apply 3 weakness.
   useCosts: 1
-  image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
+  image: {fileID: 21300000, guid: 92738014db85561488380574437e545c, type: 3}
   effect:
   - effectType: 1
     strength: 3

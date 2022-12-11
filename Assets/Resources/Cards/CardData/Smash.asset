@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Smash
   descrition: Deal damage to target. Apply 1 weakness.
   useCosts: 1
-  image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
+  image: {fileID: 21300000, guid: 15e94d1a309d8514cb3bf0e797f123a1, type: 3}
   effect:
   - effectType: 0
     strength: 2

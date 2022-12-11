@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Shield
   descrition: Gain 6 shield.
   useCosts: 1
-  image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
+  image: {fileID: 21300000, guid: be5dccff4ff642d4dba2cd12b1d8a289, type: 3}
   effect:
   - effectType: 3
     strength: 6

@@ -6,23 +6,23 @@ using UnityEngine.EventSystems;
 
 public class CardView : MonoBehaviour
 {
-    Animator animator;
+    //Animator animator;
     Vector3 startPos;
     private static Vector3 scale= new Vector3(0.21F, 0.21F, 0.21F);
     private void Start()
     {
         startPos= transform.position;
-        animator=GetComponent<Animator>();
+        //animator=GetComponent<Animator>();
     }
     private void OnMouseDown()
     {
-        animator.enabled = false;
+        //animator.enabled = false;
         transform.localScale = scale;
     }
     private void OnMouseUp()
     {
         transform.position = startPos;
-        animator.enabled = true;
+        //animator.enabled = true;
     }
     private void OnMouseDrag()
     {
@@ -32,11 +32,11 @@ public class CardView : MonoBehaviour
     }
     private void OnMouseEnter()
     {
-        GetComponent<Animator>().SetBool("MouseHover", true);
+        //GetComponent<Animator>().SetBool("MouseHover", true);
     }
     private void OnMouseExit()
     {
-        GetComponent<Animator>().SetBool("MouseHover", false);
+        //GetComponent<Animator>().SetBool("MouseHover", false);
     }
 
 }

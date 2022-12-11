@@ -47,4 +47,5 @@ public abstract class ICard:MonoBehaviour
             cardData.image = value;
         }
     }
+    
 }

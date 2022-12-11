@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : Characteristics
@@ -7,10 +8,12 @@ public class PlayerController : Characteristics
     [SerializeField] public int maxEnergy;
     [SerializeField] public int drawCardsInHand = 3;
     public bool turnEnded=false;
+    [SerializeField] public List<CardData> deck;//player cards
     [SerializeField] public List<ICard> draw;//available to draw
     [SerializeField] public List<ICard> hand;//cards in hand
     [SerializeField] public List<ICard> discarded;//used/discarded cards
     [SerializeField] private GameObject deckFolder;
+    [SerializeField] private GameObject cardPrefab;
     [SerializeField] private float cardDistance = 3.0f;
     [SerializeField] private float cardPositionY = -4;//middle card position
 
@@ -18,16 +21,19 @@ public class PlayerController : Characteristics
     {
         energy = maxEnergy;
         hp = maxHp;
-        FightController.Instance.HandDraw.AddListener(DrawCard);
         DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
-        Debug.Log(status);
-        for (int i = 0; i < draw.Count; i++)
+        draw= new List<ICard>();
+        for (int i = 0; i < deck.Count; i++)
         {
-            draw[i] = Instantiate(draw[i], deckFolder.transform);
+            draw.Add(Instantiate(cardPrefab, deckFolder.transform).GetComponent<Card>());
+            draw.LastOrDefault().cardData = deck[i];
+            draw.LastOrDefault().GetComponent<UpdateCardDescription>().UpdateDescription();
         }
+        
+        FightController.Instance.HandDraw.AddListener(DrawCard);
     }
     public void DrawCard()
     {

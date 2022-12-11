@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Transfer
   descrition: Transfer 1 energy.
   useCosts: 1
-  image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
+  image: {fileID: 21300000, guid: 514ab5f7f6ed0924685b8d2832d89270, type: 3}
   effect:
   - effectType: 7
     strength: 1
