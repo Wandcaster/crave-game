@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : EnemyBehaviour
@@ -52,5 +53,7 @@ public class EnemyController : EnemyBehaviour
         transform.localScale = enemyData.scale;
         transform.position = enemyData.position;
         GetComponent<SpriteRenderer>().sprite = enemyData.appearance;
+        hp = maxHp;
     }
+
 }
