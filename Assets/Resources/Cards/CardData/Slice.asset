@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Slice
   descrition: Deal damage to target.
   useCosts: 1
-  image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
+  image: {fileID: 21300000, guid: 883e1a648b18b2049acbca14c1ec66dd, type: 3}
   effect:
   - effectType: 0
     strength: 6

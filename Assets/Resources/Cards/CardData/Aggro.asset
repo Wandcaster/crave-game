@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Aggro
   descrition: Gain 6 shield.
   useCosts: 1
-  image: {fileID: 21300000, guid: a412a991be7e3e04780fe0225c2ab42d, type: 3}
+  image: {fileID: 21300000, guid: a4c97cfa7fde64047bcf69fe379168f6, type: 3}
   effect:
   - effectType: 8
     strength: 0

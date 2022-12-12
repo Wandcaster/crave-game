@@ -33,10 +33,6 @@ public class Card : ICard
             cardOwner.RepositionCards();
         }
     }
-
-
-    
-
     private void PlayCard(Characteristics target)
     {
         Debug.Log("Energy" + cardOwner.energy + "|:" + useCosts);

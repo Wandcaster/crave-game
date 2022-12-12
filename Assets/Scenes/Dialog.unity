@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &224331072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 180228934
+  GlobalObjectIdHash: 2182142047
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -250,20 +250,16 @@ MonoBehaviour:
   maxEnergy: 3
   drawCardsInHand: 4
   turnEnded: 0
-  deck:
-  - {fileID: 11400000, guid: ec3f66a5696d6214981aa819e4b3a7ea, type: 2}
-  - {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
-  - {fileID: 11400000, guid: 156fc9df274828a4ab3846fcf4e63ca4, type: 2}
-  - {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
-  - {fileID: 11400000, guid: e6c6c0b1274327f4aa33b828a22b0bd2, type: 2}
-  - {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
-  - {fileID: 11400000, guid: 7c67264e8f4ca934e9a984bbf03f0659, type: 2}
-  - {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
-  draw: []
+  draw:
+  - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}
+  - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}
+  - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}
+  - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}
+  - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}
+  - {fileID: 8661407882224195060, guid: 13157972a9817cc449e188519e34b40f, type: 3}
   hand: []
   discarded: []
   deckFolder: {fileID: 1327907092}
-  cardPrefab: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
   cardDistance: 3
   cardPositionY: -4
 --- !u!4 &346744734
@@ -652,7 +648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &733332051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,7 +1169,6 @@ MonoBehaviour:
   maxEnergy: 0
   drawCardsInHand: 3
   turnEnded: 0
-  deck: []
   draw:
   - {fileID: 0}
   - {fileID: 0}
@@ -1185,7 +1180,6 @@ MonoBehaviour:
   hand: []
   discarded: []
   deckFolder: {fileID: 0}
-  cardPrefab: {fileID: 0}
   cardDistance: 3
   cardPositionY: -4
 --- !u!4 &1565829282
@@ -1215,7 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 683152045
+  GlobalObjectIdHash: 4065884792
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
@@ -1362,9 +1356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2133134564}
-  - component: {fileID: 2133134563}
   - component: {fileID: 2133134565}
-  - component: {fileID: 2133134566}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1372,33 +1364,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2133134563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133134562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d3ae45d03e8514dad9b179a1b5bd6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HandDraw:
-    m_PersistentCalls:
-      m_Calls: []
-  PlayerTurn:
-    m_PersistentCalls:
-      m_Calls: []
-  EnemyTurn:
-    m_PersistentCalls:
-      m_Calls: []
-  EndTurn:
-    m_PersistentCalls:
-      m_Calls: []
-  playerControllers:
-  - {fileID: 346744733}
-  FightState: 0
 --- !u!4 &2133134564
 Transform:
   m_ObjectHideFlags: 0
@@ -1426,23 +1391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1919670357
+  GlobalObjectIdHash: 962893296
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &2133134566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133134562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c021e71b9667fa44886e260153e1f284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyControllers: []
-  avalableEnemys:
-  - {fileID: 9186564517961979075, guid: 4f60f6ea04f41a7469bf615453c0f1d6, type: 3}
-  targetPriority: {fileID: 0}
