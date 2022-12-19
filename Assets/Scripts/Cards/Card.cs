@@ -7,7 +7,7 @@ using UnityEngine;
 public class Card : ICard
 {
     [SerializeField]
-    public List<EffectData> effect
+    public List<EffectData> effects
     {
         get { return cardData.effect; }
         //set { cardData.effect = value; }
@@ -17,10 +17,9 @@ public class Card : ICard
     private void Start()
     {
         cardOwner=FindObjectOfType<PlayerController>();
-        foreach (var item in effect)
+        foreach (var effect in effects)
         {
-            item.effect = (Effect)Activator.CreateInstance(Type.GetType(item.effectType.ToString()));
-            item.effect.efficiency = item.strength;
+            effect.act = (Effect)Activator.CreateInstance(Type.GetType(effect.effectType.ToString()));
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -39,9 +38,9 @@ public class Card : ICard
         if (cardOwner.energy - useCosts < 0) return;
         cardOwner.energy -= useCosts;
 
-        foreach (var effect in effect)
+        foreach (var effect in effects)
         {
-            effect.effect.ApplyEffect(target, cardOwner);
+            effect.act.ApplyEffect(target, cardOwner, effect.strength);
         }
         cardOwner.discarded.Add(this);
         cardOwner.hand.Remove(this);

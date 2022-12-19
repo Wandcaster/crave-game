@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Heal : Effect
 {
-    public override void ApplyEffect(Characteristics target, Characteristics source)
+    public override void ApplyEffect(Characteristics target, Characteristics source, int efficiency)
     {
         int heal = efficiency;
         if (target.status.bleeding != 0) heal = (int)(heal * StatusEffects.bleedingEfficiency);

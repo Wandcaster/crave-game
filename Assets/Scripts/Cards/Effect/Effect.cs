@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class Effect
 {
-    [HideInInspector]
-    public int efficiency;
-    
-    public virtual void ApplyEffect(Characteristics target, Characteristics source) {
+    public virtual void ApplyEffect(Characteristics target, Characteristics source, int efficiency) {
         throw new System.NotImplementedException();
     }
 }

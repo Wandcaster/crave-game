@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Aggro : Effect
 {
-    public override void ApplyEffect(Characteristics target, Characteristics source)
+    public override void ApplyEffect(Characteristics target, Characteristics source, int efficiency)
     {
         EnemyManager.Instance.targetPriority = source;
 
