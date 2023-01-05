@@ -29,17 +29,18 @@ namespace UI {
 
         private Vector2 CalculatePosition() {
             var camSize = CameraSize;
+            var scale = transform.localScale;
             var bounds = Bounds;
             var horizontalOffset = HorizontalAlignment switch {
-                HorizontalAlignment.Left => -camSize.x + bounds.x,
+                HorizontalAlignment.Left => -camSize.x + bounds.x /** scale.x*/,
                 HorizontalAlignment.Center => 0.0f,
-                HorizontalAlignment.Right => camSize.x - bounds.x,
+                HorizontalAlignment.Right => camSize.x - bounds.x /** scale.x*/,
                 _ => throw new ArgumentOutOfRangeException()
             } + Offset.x;
             var verticalOffset = VerticalAlignment switch {
-                VerticalAlignment.Bottom => -camSize.y + bounds.y,
+                VerticalAlignment.Bottom => -camSize.y + bounds.y/* * scale.y*/,
                 VerticalAlignment.Center => 0.0f,
-                VerticalAlignment.Top => camSize.y - bounds.y,
+                VerticalAlignment.Top => camSize.y - bounds.y /** scale.y*/,
                 _ => throw new ArgumentOutOfRangeException()
             } + Offset.y;
             return new Vector2(horizontalOffset, verticalOffset);
@@ -48,6 +49,12 @@ namespace UI {
         private Vector2? camSize;
 
         private Vector2 Bounds => GetComponent<Collider2D>().bounds.extents;
+
+        private void OnDrawGizmos() {
+            var extends = Bounds;
+            
+            //Gizmos.DrawSphere();
+        }
 
         private Camera mainCamera;
 

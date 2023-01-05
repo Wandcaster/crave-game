@@ -7,11 +7,9 @@ using UnityEngine;
 public class Card : ICard
 {
     [SerializeField]
-    public List<EffectData> effect
-    {
-        get { return cardData.effect; }
+    public List<EffectData> effect =>  cardData.effect;
         //set { cardData.effect = value; }
-    }
+    
     [SerializeField]
     PlayerController cardOwner;
     private void Start()
