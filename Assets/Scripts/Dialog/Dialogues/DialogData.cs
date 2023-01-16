@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DialogData", menuName = "Dialogs/DialogData")]
 public class DialogData : ScriptableObject
 {
+    public string title;
+    [TextArea]
     public string initialTalk;//start dialog with this
     public DialogOption option1;
     public DialogOption option2;

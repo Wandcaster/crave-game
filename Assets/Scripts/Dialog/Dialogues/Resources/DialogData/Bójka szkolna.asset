@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf06a6989b668fe46a2f9cf5ef021d1e, type: 3}
+  m_Name: "B\xF3jka szkolna"
+  m_EditorClassIdentifier: 
+  title: 
+  initialTalk: "Id\u0105c korytarzem zaczepia Ci\u0119 starszy kolega, kotry chc\u0119
+    zabra\u0107 Ci kanapki."
+  option1:
+    playerAnswer: Uciekacie
+    playerExit: "Zostajecie z\u0142apani i pobici"
+    effect:
+    - effectType: 0
+      strength: 4
+  option2:
+    playerAnswer: "Podejmujecie walk\u0119."
+    playerExit: "Przegrywacie ale czujecie si\u0119 silniejsi "
+    effect:
+    - effectType: 4
+      strength: 2
+    - effectType: 0
+      strength: 2
+  option3:
+    playerAnswer: Oddajecie kanapki.
+    playerExit: Burczy wam w brzuchu.
+    effect:
+    - effectType: 1
+      strength: 2
