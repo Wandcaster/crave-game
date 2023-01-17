@@ -14,10 +14,8 @@ public class Characteristics : NetworkBehaviour
         status = new StatusEffects();
         maxHp = hp;
     }
-    protected bool IsAlive()
-    {
-        if (hp > 0) return true;
-        return false;
+    protected bool IsAlive() {
+        return hp > 0;
     }
     
     //returns true is target is alive, returns false if target is dead
