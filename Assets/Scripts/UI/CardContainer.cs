@@ -20,8 +20,9 @@ namespace UI {
         [SerializeField] private Texture2D texture;
 
         [FormerlySerializedAs("RotationPerCard")] [SerializeField] private float rotationPerCard = 10f;
+        [SerializeField] private float cardScaleFactor = 1.6f;
         [SerializeField] private Card cardPrefab;
-        [SerializeField] private List<CardData> sampleCards;
+        //[SerializeField] private List<CardData> sampleCards;
 
         public delegate void CardEvent(CardData data, GameObject target);
 
@@ -119,7 +120,7 @@ namespace UI {
                     lastHoveredCard.TweenLocalScale(Vector3.one, 0.2f);
                 }
                 if (card != null) {
-                    card.TweenLocalScale(Vector3.one * 1.3f, 0.2f);
+                    card.TweenLocalScale(Vector3.one * cardScaleFactor, 0.2f);
                 }
 
                 lastHoveredCard = card;
@@ -189,7 +190,7 @@ namespace UI {
                 var rotatedHighPoint = RotatePointAroundPivot(highPoint, currentCardPosition, rotation);
                 var yOffset = Math.Abs(currentCardPosition.y + offset.y - rotatedHighPoint.y);
                 // LEAVE IT AS IS FOR NOW, I SPENT 2 WEEKS TRYING TO ADJUST IT AND IM CRYING
-                var position = new Vector3((0.7f * i) - size / 2.0f, -yOffset * 2 /*+ (float) (-Math.Abs(rotation.z) * 0.015)*/, i + 1);
+                var position = new Vector3((0.9f * i) - size / 2.0f, -yOffset * 2 /*+ (float) (-Math.Abs(rotation.z) * 0.015)*/, i + 1);
                 if (i == sprites.Count - 1 && newCard) {
                     sprTransform.eulerAngles = rotation;
                     sprTransform.localPosition = position;
@@ -227,7 +228,7 @@ namespace UI {
         }
 
         private void Awake() {
-            KeepAddingCards().Forget();
+            //KeepAddingCards().Forget();
         }
 
         private Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles) {
@@ -236,11 +237,11 @@ namespace UI {
             return dir + pivot;
         }
 
-        private async UniTaskVoid KeepAddingCards() {
-            foreach (var card in sampleCards) {
-                await UniTask.Delay(TimeSpan.FromSeconds(1));
-                AddCard(card);
-            }
-        }
+        // private async UniTaskVoid KeepAddingCards() {
+        //     foreach (var card in sampleCards) {
+        //         await UniTask.Delay(TimeSpan.FromSeconds(1));
+        //         AddCard(card);
+        //     }
+        // }
     }
 }

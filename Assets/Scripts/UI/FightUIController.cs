@@ -16,14 +16,14 @@ namespace UI {
 
         public event Action OnEndTurn;
         
-        public async UniTaskVoid DrawCards(ICollection<CardData> cards) {
+        public async UniTask DrawCards(ICollection<CardData> cards) {
             // TODO: call ui to draw cards
             throw new NotImplementedException("pretty card selection aniamtion?");
         }
 
         public IEnumerable<CardData> cardsInHand => cardsInHandContainer.cardsInHand;
 
-        public async UniTaskVoid AddToHand(CardData card) {
+        public async UniTask AddToHand(CardData card) {
             // HACK: move this elsewhere if possible
             foreach (var effectData in card.effect) {
                 effectData.effect = (Effect) Activator.CreateInstance(Type.GetType(effectData.effectType.ToString()) ??
@@ -33,7 +33,7 @@ namespace UI {
             cardsInHandContainer.AddCard(card);
         }
 
-        public async UniTaskVoid RemoveCard(int index) {
+        public async UniTask RemoveCard(int index) {
             cardsInHandContainer.RemoveCard(index);
         }
 
