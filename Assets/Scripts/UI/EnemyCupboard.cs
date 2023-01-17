@@ -20,7 +20,7 @@ namespace UI {
         
         }
 
-        private void AddEnemy() {
+        public void AddEnemy() {
             var obj = Instantiate(enemyPrefab, transform);
             obj.AddComponent<BoxCollider2D>();
             enemies.Add(obj);

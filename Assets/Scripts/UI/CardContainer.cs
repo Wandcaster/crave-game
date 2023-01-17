@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
 using ElRaccoone.Tweens;
+using PlayerManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 namespace UI {
     public class CardContainer : MonoBehaviour {
+        public PlayableCharacterType currentTurn = PlayableCharacterType.Kuro;
+        public PlayableCharacterType hostCharacter = PlayableCharacterType.Kuro;
+        public bool isHostsTurn => currentTurn == hostCharacter;
         private List<GameObject> sprites = new();
+        public IEnumerable<CardData> cardsInHand => sprites.Select(s => s.GetComponent<Card>().cardData);
+        private Lazy<Camera> _mainCamera = new(() => Camera.main);
+        private Camera mainCamera => _mainCamera.Value;
         [SerializeField] private Texture2D texture;
 
         [FormerlySerializedAs("RotationPerCard")] [SerializeField] private float rotationPerCard = 10f;
@@ -40,7 +47,7 @@ namespace UI {
                         sprites.Insert(newIndex, draggedCard);
                     } else {
                         lastHoveredCard = null;
-                        var usable = true;
+                        var usable = isHostsTurn;
                         // var usable = draggedCard.isUsableOn(target);
                         if (usable) {
                             // onCardPlayed(draggedCard.cardData, target);
@@ -70,6 +77,11 @@ namespace UI {
             AlignCards(true);
         }
 
+        public void RemoveCard(int index) {
+            RemoveCard(sprites[index]);
+            AlignCards();
+        }
+
         private GameObject FindObjectUnderMouse(int layerMask, Func<GameObject, bool> filter = null) {
             contactFilter.layerMask = layerMask;
             var size = Physics2D.Raycast(GetMousePosition(), Vector2.left, contactFilter, raycastResults, 4f);
@@ -85,7 +97,7 @@ namespace UI {
             return null;
         }
 
-        private Vector2 GetMousePosition() => Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        private Vector2 GetMousePosition() => mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         private void OnMouseDown() {
             var card = FindObjectUnderMouse(LayerMask.GetMask("Card"));
