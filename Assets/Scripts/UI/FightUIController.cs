@@ -16,7 +16,7 @@ namespace UI {
 
         public event Action OnEndTurn;
         
-        public async UniTask DrawCards(ICollection<CardData> cards) {
+        public async UniTask<CardData> DrawCards(ICollection<CardData> cards) {
             // TODO: call ui to draw cards
             throw new NotImplementedException("pretty card selection aniamtion?");
         }
@@ -26,7 +26,7 @@ namespace UI {
         public async UniTask AddToHand(CardData card) {
             // HACK: move this elsewhere if possible
             foreach (var effectData in card.effect) {
-                effectData.effect = (Effect) Activator.CreateInstance(Type.GetType(effectData.effectType.ToString()) ??
+                effectData.act = (Effect) Activator.CreateInstance(Type.GetType(effectData.effectType.ToString()) ??
                                                                       throw new InvalidOperationException(
                                                                           "Null effect type"));
             }

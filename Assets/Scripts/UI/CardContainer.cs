@@ -46,10 +46,14 @@ namespace UI {
                         var newIndex = sprites.IndexOf(target);
                         sprites.Remove(draggedCard);
                         sprites.Insert(newIndex, draggedCard);
-                    } else {
+                    } else if (target != null) {
                         lastHoveredCard = null;
-                        var usable = isHostsTurn;
-                        // var usable = draggedCard.isUsableOn(target);
+                        var targetType = LayerMask.LayerToName(target.layer) switch
+                        {
+                            "Enemy" => CardTarget.Enemy,
+                            "Player" => CardTarget.TeamMate
+                        };
+                        var usable = isHostsTurn && ((draggedCard.GetComponent<Card>().cardData.targets & targetType) != 0);
                         if (usable) {
                             // onCardPlayed(draggedCard.cardData, target);
                             RemoveCard(draggedCard);
