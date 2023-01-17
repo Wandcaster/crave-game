@@ -10,4 +10,5 @@ public class CardData : ScriptableObject
     public int useCosts;
     public Sprite image;
     public List<EffectData> effect;
+    public CardTarget targets;
 }

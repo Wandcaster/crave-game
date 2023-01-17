@@ -6,7 +6,11 @@ using UnityEngine;
 public class EffectData
 {
     public EffectType effectType;
-    public Effect effect;
+    /// <summary>
+    /// former effect, holds class which contains what Effect does
+    /// </summary>
+    public Effect act;
     public int strength;
-   
+
+
 }

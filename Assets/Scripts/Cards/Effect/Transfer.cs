@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Transfer : Effect
 {
-    public override void ApplyEffect(Characteristics target, Characteristics source)
+    public override void ApplyEffect(Characteristics target, Characteristics source, int efficiency)
     {
         var player = (PlayerController)target;
         player.energy += efficiency;

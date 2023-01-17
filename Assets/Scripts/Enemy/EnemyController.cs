@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : EnemyBehaviour
@@ -14,8 +15,8 @@ public class EnemyController : EnemyBehaviour
         InitData();
         foreach (var item in Attacks)
         {
-            item.effect = (Effect)Activator.CreateInstance(Type.GetType(item.effectType.ToString()));
-            item.effect.efficiency = item.strength;
+            item.act = (Effect)Activator.CreateInstance(Type.GetType(item.effectType.ToString()));
+
         }
     }
     public override void BattleStartAction()
@@ -41,7 +42,7 @@ public class EnemyController : EnemyBehaviour
 
         //Debug.Log(effect);
         //Debug.Log(target.name);
-        effect.effect.ApplyEffect(target, this);
+        effect.act.ApplyEffect(target, this, effect.strength);
     }
     private void InitData()
     {
@@ -52,5 +53,7 @@ public class EnemyController : EnemyBehaviour
         transform.localScale = enemyData.scale;
         transform.position = enemyData.position;
         GetComponent<SpriteRenderer>().sprite = enemyData.appearance;
+        hp = maxHp;
     }
+
 }

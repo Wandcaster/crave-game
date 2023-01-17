@@ -10,24 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf06a6989b668fe46a2f9cf5ef021d1e, type: 3}
-  m_Name: Dialog1
+  m_Name: Burza
   m_EditorClassIdentifier: 
-  initialTalk: Ala ma kota
+  title: 
+  initialTalk: "Czujecie spadaj\u0105cy deszcz"
   option1:
-    playerAnswer: Kot ma Hiv
-    playerExit: Exit
+    playerAnswer: (Ignorujesz deszcz)
+    playerExit: (Dostajecie hipotermii)
     effect:
-    - effectType: 0
-      strength: 5
+    - effectType: 2
+      strength: 2
   option2:
-    playerAnswer: 
-    playerExit: Exit
+    playerAnswer: (Uciekasz pod drzewo)
+    playerExit: "(Piorun trafia drzewo, pod kt\xF3rym stoicie)"
     effect:
     - effectType: 0
-      strength: 0
+      strength: 3
   option3:
-    playerAnswer: 
-    playerExit: Exit
+    playerAnswer: (Poszukujecie schronienia)
+    playerExit: "Udaje wam si\u0119 znale\u017A\u0107 schronienie"
     effect:
-    - effectType: 0
-      strength: 0
+    - effectType: 6
+      strength: 1

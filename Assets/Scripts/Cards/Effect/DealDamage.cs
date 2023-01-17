@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DealDamage : Effect
 {
-    public override void ApplyEffect(Characteristics target, Characteristics source)
+    public override void ApplyEffect(Characteristics target, Characteristics source, int efficiency)
     {
         int tempStr = efficiency;
 

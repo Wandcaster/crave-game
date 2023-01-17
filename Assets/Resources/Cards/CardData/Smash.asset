@@ -21,3 +21,4 @@ MonoBehaviour:
     strength: 2
   - effectType: 1
     strength: 1
+  targets: 1

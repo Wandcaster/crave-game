@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf06a6989b668fe46a2f9cf5ef021d1e, type: 3}
+  m_Name: Burza 1
+  m_EditorClassIdentifier: 
+  title: 
+  initialTalk: "Czujecie spadaj\u0105cy deszcz"
+  option1:
+    playerAnswer: (Ignorujesz deszcz)
+    playerExit: (Dostajecie hipotermii)
+    effect:
+    - effectType: 2
+      strength: 2
+  option2:
+    playerAnswer: (Uciekasz pod drzewo)
+    playerExit: "(Piorun trafi\u0142 drzewo obok)"
+    effect: []
+  option3:
+    playerAnswer: (Poszukujecie schronienia)
+    playerExit: "(Nie udaje wam si\u0119 znale\u017A\u0107 schronienia, przestali\u015Bcie
+      odczuwa\u0107 zimno)"
+    effect:
+    - effectType: 2
+      strength: 3
