@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DialogController : MonoBehaviour
 {
-    [SerializeField] GameObject panel;
+    [SerializeField] public GameObject panel;
     [SerializeField] TMPro.TMP_Text initialTalk;
     [SerializeField] TMPro.TMP_Text[] options;
     [SerializeField] TMPro.TMP_Text exitButton;

@@ -29,6 +29,7 @@ public class GenerateRandomEvent : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         if (eventClicked == true) return;
+        if (DialogManager.Instance.EventIsRunning()) return;
 
             MapManager.Instance.ChangeCurrentTile(gameObject);
             StartEvent();

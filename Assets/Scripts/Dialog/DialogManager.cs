@@ -22,6 +22,9 @@ public class DialogManager : Singleton<DialogManager>
     {
         dialogController.InitializeDialog(GetRandomEvent());
     }
-
+    public bool EventIsRunning()
+    {
+        return dialogController.panel.gameObject.activeSelf;   
+    }
 
 }
