@@ -6,15 +6,21 @@ using UnityEngine;
 public class DialogManager : Singleton<DialogManager>
 {
     private List<DialogData> dialogList;
+    [SerializeField] DialogController dialogController;
 
     private void Awake()
     {
         dialogList = new List<DialogData>(Resources.LoadAll<DialogData>("DialogData"));
+        TriggerEvent();
     }
 
-    public DialogData GetRandomEvent()
+    private DialogData GetRandomEvent()
     {
         return dialogList[UnityEngine.Random.Range(0, dialogList.Count)];
+    }
+    public void TriggerEvent()
+    {
+        dialogController.InitializeDialog(GetRandomEvent());
     }
 
 
