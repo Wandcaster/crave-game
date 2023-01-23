@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using PlayerManagement;
 using UnityEngine;
 using Random = System.Random;
 
@@ -15,6 +16,11 @@ namespace UI {
             foreach (var enemy in sampleEnemies) {
                 cc.AddEnemy(enemy);
             }
+            cc.SetHp(PlayableCharacterType.Kuro, 5, 10);
+            cc.SetHp(PlayableCharacterType.Shiro, 9, 13);
+            cc.SetEnergy(PlayableCharacterType.Kuro, 6);
+            cc.SetEnergy(PlayableCharacterType.Shiro, 4);
+            
             cc.OnEndTurn += () => {
                 Debug.Log("Player is ending turn!");
             };
@@ -35,6 +41,7 @@ namespace UI {
                 var c = await cc.DrawCards(list);
                 await cc.AddToHand(c);
             }
+            cc.SetHp(PlayableCharacterType.Kuro, 2, 10);
             // foreach (var sampleCard in sampleCards) {
             //     await UniTask.Delay(TimeSpan.FromSeconds(1));
             //     await cc.AddToHand(sampleCard);

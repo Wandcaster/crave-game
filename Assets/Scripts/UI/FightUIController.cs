@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using PlayerManagement;
+using TMPro;
 using UnityEngine;
 
 namespace UI {
@@ -9,6 +10,8 @@ namespace UI {
         [SerializeField] private CardContainer cardsInHandContainer;
         [SerializeField] private EnemyCupboard enemyContainer;
         [SerializeField] private CardSelectionContainer selectionContainer;
+        [SerializeField] private GameObject kuro;
+        [SerializeField] private GameObject shiro;
 
         
         /**
@@ -90,6 +93,24 @@ namespace UI {
          */
         public void RemoveEnemy(ulong id) {
             enemyContainer.RemoveEnemy(id);
+        }
+
+        public void SetHp(PlayableCharacterType character, float currentHp, float maxHp) {
+            var obj = character switch {
+                PlayableCharacterType.Kuro => kuro,
+                _ => shiro
+            };
+            var hpBar = obj.transform.GetComponentInChildren<HealthBar>();
+            hpBar.SetHp(currentHp, maxHp);
+        }
+
+        public void SetEnergy(PlayableCharacterType character, int energy) {
+            var obj = character switch {
+                PlayableCharacterType.Kuro => kuro,
+                _ => shiro
+            };
+            var txt = obj.transform.GetComponentInChildren<TMP_Text>();
+            txt.SetText(energy.ToString());
         }
     }
 }
