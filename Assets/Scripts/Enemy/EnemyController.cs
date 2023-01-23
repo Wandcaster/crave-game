@@ -13,11 +13,11 @@ public class EnemyController : EnemyBehaviour
     private void Start()
     {
         InitData();
-        foreach (var item in Attacks)
-        {
-            item.act = (Effect)Activator.CreateInstance(Type.GetType(item.effectType.ToString()));
+        //foreach (var item in Attacks)
+        //{
+        //    item.act = (Effect)Activator.CreateInstance(Type.GetType(item.effectType.ToString()));
 
-        }
+        //}
     }
     public override void BattleStartAction()
     {

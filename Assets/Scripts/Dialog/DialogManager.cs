@@ -11,7 +11,7 @@ public class DialogManager : Singleton<DialogManager>
     private void Awake()
     {
         dialogList = new List<DialogData>(Resources.LoadAll<DialogData>("DialogData"));
-        TriggerEvent();
+        //TriggerEvent();
     }
 
     private DialogData GetRandomEvent()
@@ -24,7 +24,7 @@ public class DialogManager : Singleton<DialogManager>
     }
     public bool EventIsRunning()
     {
-        return dialogController.panel.gameObject.activeSelf;   
+        return dialogController.panel.gameObject.activeSelf;
     }
 
 }

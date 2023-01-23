@@ -42,6 +42,15 @@ public class GenerateRandomEvent : MonoBehaviour
     private void StartEvent()
     {
         Debug.Log("click"+gameObject.name);
+        switch (eventType)
+        {
+            case EventType.fullyrandom:
+                DialogManager.Instance.TriggerEvent();
+                break;
+            default:
+                Debug.Log("unhandled event type:" + eventType);
+                break;
+        }
         eventClicked = true;
     }
 
@@ -56,7 +65,6 @@ public class GenerateRandomEvent : MonoBehaviour
     }
 
 
-    //TODO: podmiana sprite'ow
     private void ChangeSprite(EventType type)
     {
         //Debug.Log(type);

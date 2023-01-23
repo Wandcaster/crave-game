@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEditor;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 [Serializable]
 public class EffectData
@@ -11,6 +12,10 @@ public class EffectData
     /// </summary>
     public Effect act;
     public int strength;
+    EffectData() 
+    {
+        act= (Effect)Activator.CreateInstance(Type.GetType(effectType.ToString()));
+    }
 
 
 }

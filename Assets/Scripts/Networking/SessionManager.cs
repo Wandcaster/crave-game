@@ -18,9 +18,8 @@ public class SessionManager : NetworkSingleton<SessionManager>
     [Header("Data")]
     public string joinCode;
     public int seed;
-    public PlayableCharacterType p1Character = PlayableCharacterType.None;
-    [SerializeField]
-    public PlayableCharacterType p2Character = PlayableCharacterType.None;
+    public PlayerController player0Controller;
+    public PlayerController player1Controller;
     private void Start()
     {
         DontDestroyOnLoad(this);

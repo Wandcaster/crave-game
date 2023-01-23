@@ -25,16 +25,22 @@ public class PlayerController : Characteristics
     }
     private void Start()
     {
-        draw= new List<ICard>();
+        //InitForFightScene();
+    }
+
+    private void InitForFightScene()
+    {
+        draw = new List<ICard>();
         for (int i = 0; i < deck.Count; i++)
         {
             draw.Add(Instantiate(cardPrefab, deckFolder.transform).GetComponent<Card>());
             draw.LastOrDefault().cardData = deck[i];
             draw.LastOrDefault().GetComponent<UpdateCardDescription>().UpdateDescription();
         }
-        
+
         FightController.Instance.HandDraw.AddListener(DrawCard);
     }
+
     public void DrawCard()
     {
         turnEnded = false;

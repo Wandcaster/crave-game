@@ -9,9 +9,14 @@ public class DialogController : MonoBehaviour
     [SerializeField] TMPro.TMP_Text initialTalk;
     [SerializeField] TMPro.TMP_Text[] options;
     [SerializeField] TMPro.TMP_Text exitButton;
+    [SerializeField] private Characteristics defaultCharacteristic;
 
     private DialogData currentlyDisplayed;
 
+    private void Start()
+    {
+        
+    }
     public void InitializeDialog(DialogData dd)
     {
         currentlyDisplayed = dd;
@@ -63,6 +68,9 @@ public class DialogController : MonoBehaviour
         //GameObject player = player.
         for(int i=0; i< option.effect.Count; i++)
         {
+            Debug.Log("PlayerController:"+SessionManager.Instance.player0Controller+"Default charct:" + defaultCharacteristic+"option " + option +"optioneffect "+ option.effect[i]);
+            option.effect[i].act.ApplyEffect(SessionManager.Instance.player0Controller, defaultCharacteristic, option.effect[i].strength);
+            option.effect[i].act.ApplyEffect(SessionManager.Instance.player1Controller, defaultCharacteristic, option.effect[i].strength);
 
         }
 
