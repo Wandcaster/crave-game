@@ -53,9 +53,13 @@ namespace UI {
                             "Enemy" => CardTarget.Enemy,
                             "Player" => CardTarget.TeamMate
                         };
+                        if (target.name == "P1Icon" && hostCharacter == PlayableCharacterType.Kuro ||
+                            target.name == "P2Icon" && hostCharacter == PlayableCharacterType.Shiro) {
+                            
+                        }
                         var usable = isHostsTurn && ((draggedCard.GetComponent<Card>().cardData.targets & targetType) != 0);
                         if (usable) {
-                            // onCardPlayed(draggedCard.cardData, target);
+                            onCardPlayed?.Invoke(draggedCard.GetComponent<Card>().cardData, target);
                             RemoveCard(draggedCard);
                         }
                     }

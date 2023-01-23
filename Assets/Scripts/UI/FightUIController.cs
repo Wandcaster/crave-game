@@ -8,6 +8,12 @@ namespace UI {
     public class FightUIController : MonoBehaviour {
         [SerializeField] private CardContainer cardsInHandContainer;
         [SerializeField] private EnemyCupboard enemyContainer;
+        [SerializeField] private CardSelectionContainer selectionContainer;
+
+        public void EndTurn() {
+            if (cardsInHandContainer.isHostsTurn)
+                OnEndTurn?.Invoke();
+        }
         
         public event CardContainer.CardEvent OnCardPlayed {
             add => cardsInHandContainer.onCardPlayed += value;
@@ -17,8 +23,7 @@ namespace UI {
         public event Action OnEndTurn;
         
         public async UniTask<CardData> DrawCards(ICollection<CardData> cards) {
-            // TODO: call ui to draw cards
-            throw new NotImplementedException("pretty card selection aniamtion?");
+            return await selectionContainer.SelectCard(cards);
         }
 
         public IEnumerable<CardData> cardsInHand => cardsInHandContainer.cardsInHand;
@@ -38,11 +43,11 @@ namespace UI {
         }
 
         public void SetTurn(PlayableCharacterType playableCharacter) {
-            
+            cardsInHandContainer.currentTurn = playableCharacter;
         }
 
         public void SetPlayerOnThisHost(PlayableCharacterType playableCharacter) {
-            
+            cardsInHandContainer.hostCharacter = playableCharacter;
         }
 
         public void AddEnemy() {
