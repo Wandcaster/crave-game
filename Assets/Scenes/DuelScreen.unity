@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 320600939}
   - component: {fileID: 320600938}
   m_Layer: 7
-  m_Name: P2Icon
+  m_Name: ShiroIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,7 +1053,7 @@ GameObject:
   - component: {fileID: 1410424919}
   - component: {fileID: 1410424922}
   m_Layer: 7
-  m_Name: P1Icon
+  m_Name: KuroIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -53,8 +53,8 @@ namespace UI {
                             "Enemy" => CardTarget.Enemy,
                             "Player" => CardTarget.TeamMate
                         };
-                        if (target.name == "P1Icon" && hostCharacter == PlayableCharacterType.Kuro ||
-                            target.name == "P2Icon" && hostCharacter == PlayableCharacterType.Shiro) {
+                        if (target.name == "KuroIcon" && hostCharacter == PlayableCharacterType.Kuro ||
+                            target.name == "ShiroIcon" && hostCharacter == PlayableCharacterType.Shiro) {
                             targetType = CardTarget.Self;
                         }
                         Debug.Log($"Trying to use card at target {targetType}; usable at {draggedCard.GetComponent<Card>().cardData.targets}");
