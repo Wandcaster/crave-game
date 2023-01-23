@@ -42,21 +42,36 @@ namespace UI {
             cardsInHandContainer.RemoveCard(index);
         }
 
-        public void SetTurn(PlayableCharacterType playableCharacter) {
+        /**
+         * Set the current character's turn, this isn't the host's turn but the in game character's
+         * Set null for no player turn (aka enemy turn)
+         * This is responsible for disabling card interactions 
+         */
+        public void SetTurn(PlayableCharacterType? playableCharacter) {
             cardsInHandContainer.currentTurn = playableCharacter;
         }
 
+        /**
+         * Set the character the player on this computer is using 
+         */
         public void SetPlayerOnThisHost(PlayableCharacterType playableCharacter) {
             cardsInHandContainer.hostCharacter = playableCharacter;
         }
 
-        public void AddEnemy() {
+        /**
+         * Creates a new EnemyController and initialises it with `data`
+         */
+        public void AddEnemy(EnemyData data) {
             // This is a stub
-            enemyContainer.AddEnemy();
+            enemyContainer.AddEnemy(data);
         }
 
+        
+        /**
+         * Remove an enemy by its network object id (EnemyController.NetworkObjectId)
+         */
         public void RemoveEnemy(ulong id) {
-            
+            enemyContainer.RemoveEnemy(id);
         }
     }
 }

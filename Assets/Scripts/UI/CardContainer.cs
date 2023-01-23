@@ -10,7 +10,7 @@ using UnityEngine.Serialization;
 
 namespace UI {
     public class CardContainer : MonoBehaviour {
-        public PlayableCharacterType currentTurn = PlayableCharacterType.Kuro;
+        public PlayableCharacterType? currentTurn = PlayableCharacterType.Kuro;
         public PlayableCharacterType hostCharacter = PlayableCharacterType.Kuro;
         public bool isHostsTurn => currentTurn == hostCharacter;
         private List<GameObject> sprites = new();
