@@ -7,10 +7,14 @@ using Random = System.Random;
 namespace UI {
     public class FightUIControllerMock : MonoBehaviour {
         [SerializeField] private List<CardData> sampleCards;
+        [SerializeField] private List<EnemyData> sampleEnemies;
         private FightUIController cc;
 
         private void Start() {
             cc = GetComponent<FightUIController>();
+            foreach (var enemy in sampleEnemies) {
+                cc.AddEnemy(enemy);
+            }
             cc.OnEndTurn += () => {
                 Debug.Log("Player is ending turn!");
             };

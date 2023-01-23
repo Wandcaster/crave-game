@@ -1206,6 +1206,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
   - {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
   - {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
+  sampleEnemies:
+  - {fileID: 11400000, guid: b3284ed1a4a063d42af49bc5627c64a3, type: 2}
+  - {fileID: 11400000, guid: b3284ed1a4a063d42af49bc5627c64a3, type: 2}
 --- !u!114 &1444195648
 MonoBehaviour:
   m_ObjectHideFlags: 0

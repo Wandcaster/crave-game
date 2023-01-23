@@ -51,8 +51,8 @@ public class EnemyController : EnemyBehaviour
         maxHp= enemyData.maxHp;
         appearance= enemyData.appearance;
         transform.localScale = enemyData.scale;
-        transform.position = enemyData.position;
-        GetComponent<SpriteRenderer>().sprite = enemyData.appearance;
+        //transform.position = enemyData.position;
+        //GetComponent<SpriteRenderer>().sprite = enemyData.appearance;
         hp = maxHp;
     }
 

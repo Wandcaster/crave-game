@@ -55,8 +55,9 @@ namespace UI {
                         };
                         if (target.name == "P1Icon" && hostCharacter == PlayableCharacterType.Kuro ||
                             target.name == "P2Icon" && hostCharacter == PlayableCharacterType.Shiro) {
-                            
+                            targetType = CardTarget.Self;
                         }
+                        Debug.Log($"Trying to use card at target {targetType}; usable at {draggedCard.GetComponent<Card>().cardData.targets}");
                         var usable = isHostsTurn && ((draggedCard.GetComponent<Card>().cardData.targets & targetType) != 0);
                         if (usable) {
                             onCardPlayed?.Invoke(draggedCard.GetComponent<Card>().cardData, target);

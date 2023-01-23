@@ -31,6 +31,7 @@ namespace UI {
 
         private void AlignEnemies() {
             var totalWidth = enemies.Select(e => e.GetComponent<BoxCollider2D>().size.x * e.transform.localScale.x).Sum();
+            Debug.Log($"Total width = {totalWidth}");
             var currentX = -totalWidth / 2;
             foreach (var enemy in enemies) {
                 enemy.transform.position = new Vector3(currentX, 0, 0);

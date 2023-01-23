@@ -10,6 +10,11 @@ namespace UI {
         [SerializeField] private EnemyCupboard enemyContainer;
         [SerializeField] private CardSelectionContainer selectionContainer;
 
+        
+        /**
+         * This emits the OnEndTurn event, this function is called by the End Turn button (only if it is the current
+         * host's turn
+         */
         public void EndTurn() {
             if (cardsInHandContainer.isHostsTurn)
                 OnEndTurn?.Invoke();
@@ -22,12 +27,19 @@ namespace UI {
 
         public event Action OnEndTurn;
         
+        /**
+         * Display a selection of **THREE** cards and pick one, returns the selected card
+         * Behaviour is undefined if `cards` does not contain exactly three elements
+         */
         public async UniTask<CardData> DrawCards(ICollection<CardData> cards) {
             return await selectionContainer.SelectCard(cards);
         }
 
         public IEnumerable<CardData> cardsInHand => cardsInHandContainer.cardsInHand;
 
+        /**
+         * Adds card to hand
+         */
         public async UniTask AddToHand(CardData card) {
             // HACK: move this elsewhere if possible
             foreach (var effectData in card.effect) {
@@ -38,6 +50,12 @@ namespace UI {
             cardsInHandContainer.AddCard(card);
         }
 
+        
+        /**
+         * Forces a card to be removed from the hand. It's not necessary to call it from OnCardPlayed
+         * as cards validate if they can be used beforehand and auto-remove to improve UI smoothness
+         * This can be used to remove a card due to external factors, such as mill cards
+         */
         public async UniTask RemoveCard(int index) {
             cardsInHandContainer.RemoveCard(index);
         }
