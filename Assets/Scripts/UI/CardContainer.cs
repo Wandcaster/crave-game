@@ -4,6 +4,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using ElRaccoone.Tweens;
 using PlayerManagement;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
@@ -17,11 +18,23 @@ namespace UI {
         public IEnumerable<CardData> cardsInHand => sprites.Select(s => s.GetComponent<Card>().cardData);
         private Lazy<Camera> _mainCamera = new(() => Camera.main);
         private Camera mainCamera => _mainCamera.Value;
+
+        private int GetCurrentEnergy {
+            get {
+                var ch = hostCharacter switch {
+                    PlayableCharacterType.Kuro => kuro,
+                    _ => shiro
+                };
+                return int.Parse(ch.GetComponentInChildren<TMP_Text>().text);
+            }
+        }
         [SerializeField] private Texture2D texture;
 
         [FormerlySerializedAs("RotationPerCard")] [SerializeField] private float rotationPerCard = 10f;
         [SerializeField] private float cardScaleFactor = 1.6f;
         [SerializeField] private Card cardPrefab;
+        [SerializeField] private GameObject shiro;
+        [SerializeField] private GameObject kuro;
         //[SerializeField] private List<CardData> sampleCards;
 
         public delegate void CardEvent(CardData data, GameObject target);
@@ -58,10 +71,14 @@ namespace UI {
                             target.name == "ShiroIcon" && hostCharacter == PlayableCharacterType.Shiro) {
                             targetType = CardTarget.Self;
                         }
-                        Debug.Log($"Trying to use card at target {targetType}; usable at {draggedCard.GetComponent<Card>().cardData.targets}");
-                        var usable = isHostsTurn && ((draggedCard.GetComponent<Card>().cardData.targets & targetType) != 0);
+
+                        var draggedCardData = draggedCard.GetComponent<Card>().cardData;
+                        
+                        Debug.Log($"Trying to use card at target {targetType}; usable at {draggedCardData.targets}");
+                        
+                        var usable = isHostsTurn && (draggedCardData.targets & targetType) != 0 && draggedCardData.useCosts <= GetCurrentEnergy;
                         if (usable) {
-                            onCardPlayed?.Invoke(draggedCard.GetComponent<Card>().cardData, target);
+                            onCardPlayed?.Invoke(draggedCardData, target);
                             RemoveCard(draggedCard);
                         }
                     }

@@ -25,6 +25,10 @@ namespace UI {
                 Debug.Log("Player is ending turn!");
             };
             cc.OnCardPlayed += (card, target) => {
+                /*
+                 * This is only executed if the card is usable in the first place - if there isnt enough energy
+                 * or if the target isnt suitable, OnCardPLayed will not be called
+                 */
                 Debug.Log($"Played card {card.cardName} against {target} who is {LayerMask.LayerToName(target.layer)}");
             };
             KeepAddingCards().Forget();
