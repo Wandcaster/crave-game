@@ -1,12 +1,16 @@
+using System;
 using ElRaccoone.Tweens;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI {
     public class HealthBar : MonoBehaviour {
-        [SerializeField] private Slider slider;
-
         [SerializeField] private Image bar;
+        private Slider slider;
+
+        private void Awake() {
+            slider = GetComponent<Slider>();
+        }
 
         public void SetHp(float current, float max) {
             slider.maxValue = max;
