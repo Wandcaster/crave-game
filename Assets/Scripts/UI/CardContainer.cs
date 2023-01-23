@@ -51,7 +51,8 @@ namespace UI {
                         var targetType = LayerMask.LayerToName(target.layer) switch
                         {
                             "Enemy" => CardTarget.Enemy,
-                            "Player" => CardTarget.TeamMate
+                            "Player" => CardTarget.TeamMate,
+                            _ => CardTarget.None
                         };
                         if (target.name == "KuroIcon" && hostCharacter == PlayableCharacterType.Kuro ||
                             target.name == "ShiroIcon" && hostCharacter == PlayableCharacterType.Shiro) {
@@ -236,21 +237,10 @@ namespace UI {
             }
         }
 
-        private void Awake() {
-            //KeepAddingCards().Forget();
-        }
-
         private Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles) {
             var dir = point - pivot;
             dir = Quaternion.Euler(angles) * dir;
             return dir + pivot;
         }
-
-        // private async UniTaskVoid KeepAddingCards() {
-        //     foreach (var card in sampleCards) {
-        //         await UniTask.Delay(TimeSpan.FromSeconds(1));
-        //         AddCard(card);
-        //     }
-        // }
     }
 }
