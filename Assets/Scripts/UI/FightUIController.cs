@@ -12,6 +12,7 @@ namespace UI {
         [SerializeField] private CardSelectionContainer selectionContainer;
         [SerializeField] private GameObject kuro;
         [SerializeField] private GameObject shiro;
+        [SerializeField] private PlayedCardFx playedCardFx;
 
         
         /**
@@ -111,6 +112,14 @@ namespace UI {
             };
             var txt = obj.transform.GetComponentInChildren<TMP_Text>();
             txt.SetText(energy.ToString());
+        }
+
+        /**
+         * Plays card effects, for example when the other player used a card
+         * to show this host its effects
+         */
+        public async UniTask PlayCardEffects(CardData data) {
+            await playedCardFx.PlayCardEffect(data);
         }
     }
 }

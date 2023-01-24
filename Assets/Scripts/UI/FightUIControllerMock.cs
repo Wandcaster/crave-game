@@ -16,7 +16,7 @@ namespace UI {
             foreach (var enemy in sampleEnemies) {
                 cc.AddEnemy(enemy);
             }
-            cc.SetHp(PlayableCharacterType.Kuro, 5, 10);
+            cc.SetHp(PlayableCharacterType.Kuro, 9, 10);
             cc.SetHp(PlayableCharacterType.Shiro, 9, 13);
             cc.SetEnergy(PlayableCharacterType.Kuro, 6);
             cc.SetEnergy(PlayableCharacterType.Shiro, 4);
@@ -46,6 +46,10 @@ namespace UI {
                 await cc.AddToHand(c);
             }
             cc.SetHp(PlayableCharacterType.Kuro, 2, 10);
+            await UniTask.Delay(1000);
+            await cc.PlayCardEffects(sampleCards[random.Next(sampleCards.Count)]);
+            await UniTask.Delay(500);
+            await cc.PlayCardEffects(sampleCards[random.Next(sampleCards.Count)]);
             // foreach (var sampleCard in sampleCards) {
             //     await UniTask.Delay(TimeSpan.FromSeconds(1));
             //     await cc.AddToHand(sampleCard);
