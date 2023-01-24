@@ -4,24 +4,37 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using ElRaccoone.Tweens;
 using PlayerManagement;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 namespace UI {
     public class CardContainer : MonoBehaviour {
-        public PlayableCharacterType currentTurn = PlayableCharacterType.Kuro;
+        public PlayableCharacterType? currentTurn = PlayableCharacterType.Kuro;
         public PlayableCharacterType hostCharacter = PlayableCharacterType.Kuro;
         public bool isHostsTurn => currentTurn == hostCharacter;
         private List<GameObject> sprites = new();
         public IEnumerable<CardData> cardsInHand => sprites.Select(s => s.GetComponent<Card>().cardData);
         private Lazy<Camera> _mainCamera = new(() => Camera.main);
         private Camera mainCamera => _mainCamera.Value;
+
+        private int GetCurrentEnergy {
+            get {
+                var ch = hostCharacter switch {
+                    PlayableCharacterType.Kuro => kuro,
+                    _ => shiro
+                };
+                return int.Parse(ch.GetComponentInChildren<TMP_Text>().text);
+            }
+        }
         [SerializeField] private Texture2D texture;
 
         [FormerlySerializedAs("RotationPerCard")] [SerializeField] private float rotationPerCard = 10f;
         [SerializeField] private float cardScaleFactor = 1.6f;
         [SerializeField] private Card cardPrefab;
+        [SerializeField] private GameObject shiro;
+        [SerializeField] private GameObject kuro;
         //[SerializeField] private List<CardData> sampleCards;
 
         public delegate void CardEvent(CardData data, GameObject target);
@@ -51,11 +64,21 @@ namespace UI {
                         var targetType = LayerMask.LayerToName(target.layer) switch
                         {
                             "Enemy" => CardTarget.Enemy,
-                            "Player" => CardTarget.TeamMate
+                            "Player" => CardTarget.TeamMate,
+                            _ => CardTarget.None
                         };
-                        var usable = isHostsTurn && ((draggedCard.GetComponent<Card>().cardData.targets & targetType) != 0);
+                        if (target.name == "KuroIcon" && hostCharacter == PlayableCharacterType.Kuro ||
+                            target.name == "ShiroIcon" && hostCharacter == PlayableCharacterType.Shiro) {
+                            targetType = CardTarget.Self;
+                        }
+
+                        var draggedCardData = draggedCard.GetComponent<Card>().cardData;
+                        
+                        Debug.Log($"Trying to use card at target {targetType}; usable at {draggedCardData.targets}");
+                        
+                        var usable = isHostsTurn && (draggedCardData.targets & targetType) != 0 && draggedCardData.useCosts <= GetCurrentEnergy;
                         if (usable) {
-                            // onCardPlayed(draggedCard.cardData, target);
+                            onCardPlayed?.Invoke(draggedCardData, target);
                             RemoveCard(draggedCard);
                         }
                     }
@@ -231,21 +254,10 @@ namespace UI {
             }
         }
 
-        private void Awake() {
-            //KeepAddingCards().Forget();
-        }
-
         private Vector3 RotatePointAroundPivot(Vector3 point, Vector3 pivot, Vector3 angles) {
             var dir = point - pivot;
             dir = Quaternion.Euler(angles) * dir;
             return dir + pivot;
         }
-
-        // private async UniTaskVoid KeepAddingCards() {
-        //     foreach (var card in sampleCards) {
-        //         await UniTask.Delay(TimeSpan.FromSeconds(1));
-        //         AddCard(card);
-        //     }
-        // }
     }
 }
