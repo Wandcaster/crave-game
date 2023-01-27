@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,6 +16,7 @@ public class FightController : NetworkSingleton<FightController>
     public List<PlayerController> playerControllers;
     public FightStates FightState;
 
+    [SerializeField] FightUIController fightUIController;
     private void Start()
     {
         EndTurn.AddListener(CheckEndTurn);
@@ -26,8 +28,13 @@ public class FightController : NetworkSingleton<FightController>
     }
     private void StartBattle()
     {
+        fightUIController.OnEndTurn += EndTurnMethod;
         HandDraw.Invoke();
         PlayerTurn.Invoke();
+    }
+    public void EndTurnMethod()
+    {
+        EndTurn.Invoke();
     }
     public void CheckEndTurn()
     {

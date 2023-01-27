@@ -37,7 +37,7 @@ namespace UI {
         [SerializeField] private GameObject kuro;
         //[SerializeField] private List<CardData> sampleCards;
 
-        public delegate void CardEvent(CardData data, GameObject target);
+        public delegate void CardEvent(Card data, GameObject target, PlayerController source);
 
         public event CardEvent onCardPlayed;
         
@@ -72,13 +72,18 @@ namespace UI {
                             targetType = CardTarget.Self;
                         }
 
-                        var draggedCardData = draggedCard.GetComponent<Card>().cardData;
+                        var tempDraggedCard = draggedCard.GetComponent<Card>();
                         
-                        Debug.Log($"Trying to use card at target {targetType}; usable at {draggedCardData.targets}");
+                        Debug.Log($"Trying to use card at target {targetType}; usable at {tempDraggedCard.cardData.targets}");
                         
-                        var usable = isHostsTurn && (draggedCardData.targets & targetType) != 0 && draggedCardData.useCosts <= GetCurrentEnergy;
+                        var usable = isHostsTurn && (tempDraggedCard.cardData.targets & targetType) != 0 && tempDraggedCard.cardData.useCosts <= GetCurrentEnergy;
                         if (usable) {
-                            onCardPlayed?.Invoke(draggedCardData, target);
+                            var ch = currentTurn switch
+                            {
+                                PlayableCharacterType.Kuro => kuro,
+                                _ => shiro
+                            };
+                            onCardPlayed?.Invoke(tempDraggedCard, target, ch.GetComponent<PlayerController>());
                             RemoveCard(draggedCard);
                         }
                     }

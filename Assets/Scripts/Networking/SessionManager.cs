@@ -18,10 +18,11 @@ public class SessionManager : NetworkSingleton<SessionManager>
     [Header("Data")]
     public string joinCode;
     public int seed;
-    public PlayerController player0Controller;
+    public PlayerController player0Controller; //Local Player
     public PlayerController player1Controller;
     private void Start()
     {
+        player0Controller = GameObject.FindObjectOfType<PlayerController>(); //Usunac
         DontDestroyOnLoad(this);
         networkManager.OnServerStarted += ServerStart;
         networkManager.OnClientDisconnectCallback += ServerStop;

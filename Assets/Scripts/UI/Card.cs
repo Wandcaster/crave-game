@@ -8,7 +8,9 @@ namespace UI {
         [SerializeField] private TMP_Text description;
         [SerializeField] private TMP_Text cardName;
         [SerializeField] private TMP_Text cost;
-        public CardData cardData { get; private set; }
+
+        public PlayerController cardOwner;
+        public CardData cardData { get; set; }
 
         public void Initialise(CardData cardData) {
             this.cardData = cardData;
@@ -16,8 +18,23 @@ namespace UI {
             cardName.text = cardData.name;
             cost.text = cardData.useCosts.ToString();
             sprite.sprite = cardData.image;
+            cardOwner = SessionManager.Instance.player0Controller;
         }
-        
-        
+        public void PlayCard(Characteristics target, PlayerController source)
+        {
+            Debug.Log("Energy" + source.energy + "|:" + cardData.useCosts);
+            if (source.energy - cardData.useCosts < 0) return;
+            source.energy -= cardData.useCosts;
+
+            foreach (var effect in cardData.effect)
+            {
+                effect.act.ApplyEffect(target, source, effect.strength);
+            }
+            source.discarded.Add(this);
+            source.hand.Remove(this);
+            gameObject.SetActive(false);
+        }
+
+
     }
 }

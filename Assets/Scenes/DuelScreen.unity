@@ -464,6 +464,8 @@ GameObject:
   - component: {fileID: 320600936}
   - component: {fileID: 320600939}
   - component: {fileID: 320600938}
+  - component: {fileID: 320600941}
+  - component: {fileID: 320600940}
   m_Layer: 7
   m_Name: ShiroIcon
   m_TagString: Untagged
@@ -531,11 +533,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320600935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.98436, y: -3.975, z: 0}
+  m_LocalPosition: {x: 7.863889, y: -3.975, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 379024691}
+  - {fileID: 1623789913}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -580,6 +583,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.2, y: 8.2}
   m_EdgeRadius: 0
+--- !u!114 &320600940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320600935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1108160130
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &320600941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320600935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15844a9efa1f73d4396002b94c4071f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
+  maxHp: 10
+  characteristicName: Nico
+  status:
+    weakness: 0
+    vulnerability: 0
+    shield: 0
+    strength: 0
+    bleeding: 0
+  energy: 0
+  maxEnergy: 3
+  drawCardsInHand: 0
+  turnEnded: 0
+  deck:
+  - {fileID: 11400000, guid: ec3f66a5696d6214981aa819e4b3a7ea, type: 2}
+  - {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
+  - {fileID: 11400000, guid: 156fc9df274828a4ab3846fcf4e63ca4, type: 2}
+  - {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
+  - {fileID: 11400000, guid: e6c6c0b1274327f4aa33b828a22b0bd2, type: 2}
+  - {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
+  - {fileID: 11400000, guid: 7c67264e8f4ca934e9a984bbf03f0659, type: 2}
+  - {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
+  draw: []
+  hand: []
+  discarded: []
+  deckFolder: {fileID: 1623789912}
+  cardPrefab: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
+  cardDistance: 3
+  cardPositionY: -4
+  characterType: 0
 --- !u!1 &379024690
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +833,120 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8661407882224195063, guid: 68228d638b53b5e4b918816d58911839, type: 3}
   m_PrefabInstance: {fileID: 424242687}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &438523285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438523289}
+  - component: {fileID: 438523288}
+  - component: {fileID: 438523287}
+  - component: {fileID: 438523286}
+  - component: {fileID: 438523290}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &438523286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438523285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c021e71b9667fa44886e260153e1f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyControllers: []
+  avalableEnemys:
+  - {fileID: 9186564517961979075, guid: 4f60f6ea04f41a7469bf615453c0f1d6, type: 3}
+  targetPriority: {fileID: 0}
+--- !u!114 &438523287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438523285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3930693456
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &438523288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438523285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d3ae45d03e8514dad9b179a1b5bd6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HandDraw:
+    m_PersistentCalls:
+      m_Calls: []
+  PlayerTurn:
+    m_PersistentCalls:
+      m_Calls: []
+  EnemyTurn:
+    m_PersistentCalls:
+      m_Calls: []
+  EndTurn:
+    m_PersistentCalls:
+      m_Calls: []
+  playerControllers:
+  - {fileID: 0}
+  FightState: 0
+--- !u!4 &438523289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438523285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1394998, y: 0.04282324, z: -0.1300168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &438523290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438523285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7a847de5270574183416e2d1542524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkManager: {fileID: 0}
+  characterSelectSceneName: 
+  MapSceneName: 
+  mainMenuSceneName: 
+  joinCode: 
+  seed: 0
+  player0Controller: {fileID: 0}
+  player1Controller: {fileID: 0}
 --- !u!1 &498276481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,6 +2073,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
   m_PrefabInstance: {fileID: 1613766224}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1402084051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402084052}
+  m_Layer: 0
+  m_Name: Deck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402084052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402084051}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1410424921}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1410424918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,6 +2116,8 @@ GameObject:
   - component: {fileID: 1410424920}
   - component: {fileID: 1410424919}
   - component: {fileID: 1410424922}
+  - component: {fileID: 1410424924}
+  - component: {fileID: 1410424923}
   m_Layer: 7
   m_Name: KuroIcon
   m_TagString: Untagged
@@ -1992,11 +2200,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410424918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.90186, y: -3.8925, z: 0}
+  m_LocalPosition: {x: -7.781389, y: -3.8925, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 879795957}
+  - {fileID: 1402084052}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2026,6 +2235,64 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.86, y: 8.86}
   m_EdgeRadius: 0
+--- !u!114 &1410424923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410424918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 4018467449
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &1410424924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410424918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15844a9efa1f73d4396002b94c4071f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
+  maxHp: 10
+  characteristicName: Nico
+  status:
+    weakness: 0
+    vulnerability: 0
+    shield: 0
+    strength: 0
+    bleeding: 0
+  energy: 0
+  maxEnergy: 3
+  drawCardsInHand: 0
+  turnEnded: 0
+  deck:
+  - {fileID: 11400000, guid: ec3f66a5696d6214981aa819e4b3a7ea, type: 2}
+  - {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
+  - {fileID: 11400000, guid: 156fc9df274828a4ab3846fcf4e63ca4, type: 2}
+  - {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
+  - {fileID: 11400000, guid: e6c6c0b1274327f4aa33b828a22b0bd2, type: 2}
+  - {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
+  - {fileID: 11400000, guid: 7c67264e8f4ca934e9a984bbf03f0659, type: 2}
+  - {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
+  draw: []
+  hand: []
+  discarded: []
+  deckFolder: {fileID: 1402084051}
+  cardPrefab: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
+  cardDistance: 3
+  cardPositionY: -4
+  characterType: 0
 --- !u!1 &1444195646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2697,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1692050f55654f1884a6017f37f635c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1623789912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1623789913}
+  m_Layer: 0
+  m_Name: Deck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1623789913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623789912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -62.581116, y: 0.32999992, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 320600937}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716655841
 GameObject:
   m_ObjectHideFlags: 0

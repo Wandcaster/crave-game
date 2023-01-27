@@ -1,14 +1,17 @@
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 public class EnemyManager : NetworkSingleton<EnemyManager>
 {
+    private int enemyCount = 1;
     public List<EnemyController> enemyControllers= new List<EnemyController>();
-    [SerializeField] private List<EnemyController> avalableEnemys;
+    [SerializeField] private List<EnemyData> avalableEnemys;
     [SerializeField] public Characteristics targetPriority=null;
+    [SerializeField] private EnemyCupboard enemyCupboard;
     private void Start()
     {
-        RespawnEnemies(1);
+        RespawnEnemies(enemyCount);
         FightController.Instance.EnemyTurn.AddListener(EnemiesActions);
 
     }
@@ -16,7 +19,7 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
     {
         for (int i = 0; i < count; i++)
         {
-            enemyControllers.Add(Instantiate(avalableEnemys[Random.Range(0, avalableEnemys.Count)],null));
+            enemyControllers.Add(enemyCupboard.AddEnemy(avalableEnemys[Random.Range(0, avalableEnemys.Count)]));
         }
     }
     private void EnemiesActions()

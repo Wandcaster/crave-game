@@ -13,9 +13,9 @@ namespace UI {
 
         private void Start() {
             cc = GetComponent<FightUIController>();
-            foreach (var enemy in sampleEnemies) {
-                cc.AddEnemy(enemy);
-            }
+            //foreach (var enemy in sampleEnemies) {
+            //    cc.AddEnemy(enemy);
+            //}
             cc.SetHp(PlayableCharacterType.Kuro, 9, 10);
             cc.SetHp(PlayableCharacterType.Shiro, 9, 13);
             cc.SetEnergy(PlayableCharacterType.Kuro, 6);
@@ -24,12 +24,14 @@ namespace UI {
             cc.OnEndTurn += () => {
                 Debug.Log("Player is ending turn!");
             };
-            cc.OnCardPlayed += (card, target) => {
+            cc.OnCardPlayed += (card, target,source) => {
                 /*
                  * This is only executed if the card is usable in the first place - if there isnt enough energy
                  * or if the target isnt suitable, OnCardPLayed will not be called
                  */
-                Debug.Log($"Played card {card.cardName} against {target} who is {LayerMask.LayerToName(target.layer)}");
+                card.PlayCard(target.GetComponent<Characteristics>(),source);
+
+                Debug.Log($"Played card {card.cardData.cardName} against {target} who is {LayerMask.LayerToName(target.layer)}");
             };
             KeepAddingCards().Forget();
         }

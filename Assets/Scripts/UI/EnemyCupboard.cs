@@ -14,13 +14,14 @@ namespace UI {
         
         }
 
-        public void AddEnemy(EnemyData data) {
+        public EnemyController AddEnemy(EnemyData data) {
             var obj = Instantiate(enemyPrefab, transform);
             obj.GetComponent<EnemyController>().enemyData = data;
             obj.GetComponent<SpriteRenderer>().sprite = data.appearance;
             obj.AddComponent<BoxCollider2D>();
             enemies.Add(obj);
             AlignEnemies();
+            return obj.GetComponent<EnemyController>();
         }
 
         public void RemoveEnemy(ulong id) {
