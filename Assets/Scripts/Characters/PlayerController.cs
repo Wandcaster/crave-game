@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerController : Characteristics
 {
-    [SerializeField] public int energy=3;
+    [SerializeField] public Observable<int> energy=new Observable<int>(3);
     [SerializeField] public int maxEnergy;
     [SerializeField] public int drawCardsInHand = 3;
     public bool turnEnded=false;
@@ -18,13 +18,12 @@ public class PlayerController : Characteristics
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private float cardDistance = 3.0f;
     [SerializeField] private float cardPositionY = -4;//middle card position
-    public PlayableCharacterType characterType;
 
     private void Awake()
     {
-        energy = maxEnergy;
-        hp = maxHp;
-        //DontDestroyOnLoad(gameObject);
+        energy.Set(maxEnergy);
+        hp.Set(maxHp);
+        DontDestroyOnLoad(gameObject);
     }
     private void Start()
     {
@@ -33,15 +32,15 @@ public class PlayerController : Characteristics
 
     private void InitForFightScene()
     {
-        draw = new List<UI.Card>();
-        for (int i = 0; i < deck.Count; i++)
-        {
-            GameObject temp = Instantiate(cardPrefab, deckFolder.transform);
-            UI.Card tempCard= temp.GetComponentInChildren<UI.Card>();
-            draw.Add(tempCard);
-            draw.LastOrDefault().cardData = deck[i];
-            //Uzupe³niæ opis kart
-        }
+        //draw = new List<UI.Card>();
+        //for (int i = 0; i < deck.Count; i++)
+        //{
+        //    GameObject temp = Instantiate(cardPrefab, deckFolder.transform);
+        //    UI.Card tempCard= temp.GetComponentInChildren<UI.Card>();
+        //    draw.Add(tempCard);
+        //    draw.LastOrDefault().cardData = deck[i];
+        //    //Uzupe³niæ opis kart
+        //}
         FightController.Instance.HandDraw.AddListener(DrawCard);
         FightController.Instance.EndTurn.AddListener(EndTurn);
     }
@@ -49,7 +48,7 @@ public class PlayerController : Characteristics
     public void DrawCard()
     {
         turnEnded = false;
-        energy = maxEnergy;
+        energy.Set(maxEnergy);
         for (int i = 0; i < hand.Count; i++) hand[i].gameObject.SetActive(false);
 
         discarded.AddRange(hand);

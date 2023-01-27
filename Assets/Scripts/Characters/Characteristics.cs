@@ -1,8 +1,10 @@
+using PlayerManagement;
 using Unity.Netcode;
 
 public class Characteristics : NetworkBehaviour
 {
-    public int hp;
+    public PlayableCharacterType userCharacterType;
+    public Observable<int> hp;
     public int maxHp;
     public string characteristicName;
 
@@ -12,10 +14,10 @@ public class Characteristics : NetworkBehaviour
     public Characteristics() 
     {
         status = new StatusEffects();
-        maxHp = hp;
+        maxHp = hp.Get();
     }
-    protected bool IsAlive() {
-        return hp > 0;
+    public bool IsAlive() {
+        return hp.Get() > 0;
     }
     
     //returns true is target is alive, returns false if target is dead
@@ -32,7 +34,7 @@ public class Characteristics : NetworkBehaviour
                 status.shield = 0;
             }
         }
-        hp -= damage;
+        hp.Set(hp.Get() - damage);
         return IsAlive();
     }
 

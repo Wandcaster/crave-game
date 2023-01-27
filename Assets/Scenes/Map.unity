@@ -1089,7 +1089,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56811a3b52b4b048aba5e54f3d2bbb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
+  userCharacterType: 2
+  hp:
+    value: 0
   maxHp: 0
   characteristicName: Map
   status:
@@ -2380,6 +2382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43826820fab10d1468fdae11f345302d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogList: []
   dialogController: {fileID: 2026448455}
 --- !u!4 &1505373263
 Transform:

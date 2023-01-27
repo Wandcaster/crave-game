@@ -13,8 +13,12 @@ namespace UI {
         [SerializeField] private GameObject kuro;
         [SerializeField] private GameObject shiro;
         [SerializeField] private PlayedCardFx playedCardFx;
+        public static FightUIController instance;
 
-        
+        private void Start()
+        {
+            instance = this;
+        }
         /**
          * This emits the OnEndTurn event, this function is called by the End Turn button (only if it is the current
          * host's turn
@@ -97,10 +101,14 @@ namespace UI {
         }
 
         public void SetHp(PlayableCharacterType character, float currentHp, float maxHp) {
-            var obj = character switch {
+            var obj = character switch
+            {
                 PlayableCharacterType.Kuro => kuro,
-                _ => shiro
-            };
+                PlayableCharacterType.Shiro => shiro,
+                _ => null
+            } ;
+            Debug.Log(character + "" + obj);
+            if (obj == null) return;
             var hpBar = obj.transform.GetComponentInChildren<HealthBar>();
             hpBar.SetHp(currentHp, maxHp);
         }

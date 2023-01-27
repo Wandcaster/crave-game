@@ -53,7 +53,11 @@ public class EnemyController : EnemyBehaviour
         transform.localScale = enemyData.scale;
         //transform.position = enemyData.position;
         //GetComponent<SpriteRenderer>().sprite = enemyData.appearance;
-        hp = maxHp;
+        hp.Set(maxHp);
+    }
+    private void OnDisable()
+    {
+        GameLoopController.Instance.CheckEnemysLife();
     }
 
 }

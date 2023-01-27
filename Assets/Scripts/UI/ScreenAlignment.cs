@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI {
     public class ScreenAlignment : MonoBehaviour {
@@ -18,8 +19,12 @@ namespace UI {
         }
 
         private void Awake() {
-            mainCamera = Camera.main;
+            SceneManager.sceneLoaded += SetCamera;
             Refresh();
+        }
+        public void SetCamera(Scene scene, LoadSceneMode loadSceneMode)
+        {
+            mainCamera = Camera.main;
         }
 
         private void OnValidate() {

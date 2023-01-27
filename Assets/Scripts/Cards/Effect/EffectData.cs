@@ -12,9 +12,13 @@ public class EffectData
     /// </summary>
     public Effect act;
     public int strength;
-    EffectData() 
+    public EffectData() 
     {
-        act= (Effect)Activator.CreateInstance(Type.GetType(effectType.ToString()));
+        InitAct();
+    }
+    public void InitAct()
+    {
+        act = (Effect)Activator.CreateInstance(Type.GetType(effectType.ToString()));
     }
 
 

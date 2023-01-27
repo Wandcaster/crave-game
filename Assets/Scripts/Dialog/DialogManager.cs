@@ -5,6 +5,7 @@ using UnityEngine;
 //copy to Map and delete in Dialog
 public class DialogManager : Singleton<DialogManager>
 {
+    [SerializeField]
     private List<DialogData> dialogList;
     [SerializeField] DialogController dialogController;
 

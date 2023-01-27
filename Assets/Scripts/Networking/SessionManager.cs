@@ -22,7 +22,6 @@ public class SessionManager : NetworkSingleton<SessionManager>
     public PlayerController player1Controller;
     private void Start()
     {
-        player0Controller = GameObject.FindObjectOfType<PlayerController>(); //Usunac
         DontDestroyOnLoad(this);
         networkManager.OnServerStarted += ServerStart;
         networkManager.OnClientDisconnectCallback += ServerStop;

@@ -68,6 +68,7 @@ public class DialogController : MonoBehaviour
         //GameObject player = player.
         for(int i=0; i< option.effect.Count; i++)
         {
+            option.effect[i].InitAct();
             Debug.Log("PlayerController:"+SessionManager.Instance.player0Controller+"Default charct:" + defaultCharacteristic+"option " + option +"optioneffect "+ option.effect[i]);
             option.effect[i].act.ApplyEffect(SessionManager.Instance.player0Controller, defaultCharacteristic, option.effect[i].strength);
             option.effect[i].act.ApplyEffect(SessionManager.Instance.player1Controller, defaultCharacteristic, option.effect[i].strength);

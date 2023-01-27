@@ -22,7 +22,7 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
             enemyControllers.Add(enemyCupboard.AddEnemy(avalableEnemys[Random.Range(0, avalableEnemys.Count)]));
         }
     }
-    private void EnemiesActions()
+    public void EnemiesActions()
     {
         foreach (var enemy in enemyControllers)
         {

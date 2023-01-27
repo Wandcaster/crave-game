@@ -611,7 +611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15844a9efa1f73d4396002b94c4071f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  userCharacterType: 1
+  hp:
+    value: 0
   maxHp: 10
   characteristicName: Nico
   status:
@@ -620,7 +622,8 @@ MonoBehaviour:
     shield: 0
     strength: 0
     bleeding: 0
-  energy: 0
+  energy:
+    value: 3
   maxEnergy: 3
   drawCardsInHand: 0
   turnEnded: 0
@@ -640,7 +643,6 @@ MonoBehaviour:
   cardPrefab: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
   cardDistance: 3
   cardPositionY: -4
-  characterType: 0
 --- !u!1 &379024690
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,8 +846,9 @@ GameObject:
   - component: {fileID: 438523289}
   - component: {fileID: 438523288}
   - component: {fileID: 438523287}
-  - component: {fileID: 438523286}
   - component: {fileID: 438523290}
+  - component: {fileID: 438523291}
+  - component: {fileID: 438523292}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -853,22 +856,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &438523286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 438523285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c021e71b9667fa44886e260153e1f284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyControllers: []
-  avalableEnemys:
-  - {fileID: 9186564517961979075, guid: 4f60f6ea04f41a7469bf615453c0f1d6, type: 3}
-  targetPriority: {fileID: 0}
 --- !u!114 &438523287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,8 +897,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   playerControllers:
-  - {fileID: 0}
+  - {fileID: 1410424924}
+  - {fileID: 320600941}
   FightState: 0
+  fightUIController: {fileID: 1444195648}
 --- !u!4 &438523289
 Transform:
   m_ObjectHideFlags: 0
@@ -945,8 +934,43 @@ MonoBehaviour:
   mainMenuSceneName: 
   joinCode: 
   seed: 0
-  player0Controller: {fileID: 0}
-  player1Controller: {fileID: 0}
+  player0Controller: {fileID: 1410424924}
+  player1Controller: {fileID: 320600941}
+--- !u!114 &438523291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438523285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c021e71b9667fa44886e260153e1f284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyControllers: []
+  avalableEnemys:
+  - {fileID: 11400000, guid: b3284ed1a4a063d42af49bc5627c64a3, type: 2}
+  targetPriority: {fileID: 0}
+  enemyCupboard: {fileID: 1132880941}
+--- !u!114 &438523292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438523285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0d8e40f7ac6ce4c93ca993db854ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightState: 0
+  enemyManager: {fileID: 438523291}
+  localPlayer: {fileID: 1410424924}
+  onlinePlayer: {fileID: 320600941}
+  fightUIController: {fileID: 1444195648}
+  mapSceneName: Map
 --- !u!1 &498276481
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15844a9efa1f73d4396002b94c4071f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  userCharacterType: 0
+  hp:
+    value: 0
   maxHp: 10
   characteristicName: Nico
   status:
@@ -2272,7 +2298,8 @@ MonoBehaviour:
     shield: 0
     strength: 0
     bleeding: 0
-  energy: 0
+  energy:
+    value: 3
   maxEnergy: 3
   drawCardsInHand: 0
   turnEnded: 0
@@ -2292,7 +2319,6 @@ MonoBehaviour:
   cardPrefab: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
   cardDistance: 3
   cardPositionY: -4
-  characterType: 0
 --- !u!1 &1444195646
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,7 +2344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444195646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dc349c84f4548c690c04cad8701aef3, type: 3}
   m_Name: 
@@ -2422,7 +2448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -10, y: 180}
+  m_AnchoredPosition: {x: -10, y: 291}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1503600892

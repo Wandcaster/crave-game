@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 
 public class DealDamage : Effect
@@ -23,7 +24,8 @@ public class DealDamage : Effect
                 target.status.shield = 0;
             }
         }
-        target.hp -= tempStr;
-        Debug.Log("DealDamage: " + tempStr);
+        target.hp.Set(target.hp.Get()- tempStr) ;
+        target.gameObject.SetActive(target.IsAlive());
+        Debug.Log(target+" "+source+" "+tempStr);
     }
 }

@@ -4,7 +4,9 @@ using UI;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-
+//Dobór Kart
+//Tura gracza 
+//Tura przeciwnika
 
 public class FightController : NetworkSingleton<FightController>
 {
@@ -40,7 +42,7 @@ public class FightController : NetworkSingleton<FightController>
     {
         foreach (var player in playerControllers)
         {
-            if (player.turnEnded == false) return;
+            if (player.turnEnded == false) return; //Zmieniaæ sieciowo bool na graczach
         }
         foreach (var player in playerControllers) player.status.DecreaseStatuses();
         EnemyTurn.Invoke();
@@ -48,7 +50,7 @@ public class FightController : NetworkSingleton<FightController>
 
     public void HandDrawEvent()
     {
-        FightState = FightStates.HandDraw;
+        //FightState = FightStates.HandDraw;
     }
     public void PlayerTurnEvent()
     {
