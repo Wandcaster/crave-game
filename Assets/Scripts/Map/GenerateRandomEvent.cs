@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 public class GenerateRandomEvent : MonoBehaviour
@@ -45,7 +46,7 @@ public class GenerateRandomEvent : MonoBehaviour
         switch (eventType)
         {
             case EventType.fullyrandom:
-                DialogManager.Instance.TriggerEvent();
+                DialogManager.Instance.TriggerEventServerRpc();
                 break;
             default:
                 Debug.Log("unhandled event type:" + eventType);

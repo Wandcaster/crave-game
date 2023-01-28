@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DialogController : MonoBehaviour
+public class DialogController : NetworkBehaviour
 {
     [SerializeField] public GameObject panel;
     [SerializeField] TMPro.TMP_Text initialTalk;
@@ -15,7 +17,16 @@ public class DialogController : MonoBehaviour
 
     private void Start()
     {
-        
+        DisableAllButtons();
+        gameObject.transform.parent.gameObject.SetActive(false);
+    }
+    private void DisableAllButtons()
+    {
+        if (IsHost) return;
+        foreach (var buttons in panel.GetComponentsInChildren<Button>())
+        {
+            buttons.enabled= false;
+        }
     }
     public void InitializeDialog(DialogData dd)
     {
@@ -30,7 +41,7 @@ public class DialogController : MonoBehaviour
 
     public void ShowDialog(bool value)
     {
-        panel.SetActive(value);
+        panel.transform.parent.gameObject.SetActive(value);
     }
     private void ShowOptions(bool value)
     {
@@ -38,7 +49,14 @@ public class DialogController : MonoBehaviour
         for (int i = 0; i < 3; i++) options[i].transform.parent.gameObject.SetActive(value);
         exitButton.transform.parent.gameObject.SetActive(!value);
     }
-    public void ClickedOptionID(int id)
+    [ServerRpc]
+    public void ClickedOptionIDServerRpc(int id)
+    {
+        ClickedOptionIDClientRpc(id);
+    }
+
+    [ClientRpc]
+    public void ClickedOptionIDClientRpc(int id)
     {
         DialogOption option=new DialogOption();
         switch (id)

@@ -41,8 +41,8 @@ public class PlayerController : Characteristics
         //    draw.LastOrDefault().cardData = deck[i];
         //    //Uzupe³niæ opis kart
         //}
-        FightController.Instance.HandDraw.AddListener(DrawCard);
-        FightController.Instance.EndTurn.AddListener(EndTurn);
+        //FightController.Instance.HandDraw.AddListener(DrawCard);
+        //FightController.Instance.EndTurn.AddListener(EndTurn);
     }
 
     public void DrawCard()
