@@ -26,7 +26,11 @@ MonoBehaviour:
     effect:
     - effectType: 4
       strength: 2
+    - effectType: 9
+      strength: 1
   option3:
-    playerAnswer: 
-    playerExit: Exit
-    effect: []
+    playerAnswer: Search for medicines.
+    playerExit: You've found some medicines to patch youselfs up.
+    effect:
+    - effectType: 9
+      strength: 99

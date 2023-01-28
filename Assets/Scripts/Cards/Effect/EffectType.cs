@@ -8,7 +8,8 @@
     Bleeding,
     Heal,
     Transfer,
-    Aggro
+    Aggro,
+    Cleanse
 }
 
 
