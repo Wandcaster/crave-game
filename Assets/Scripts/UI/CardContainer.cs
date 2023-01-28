@@ -98,6 +98,11 @@ namespace UI {
             };
         }
 
+        private void Start()
+        {
+            shiro = SessionManager.Instance.player0Controller.gameObject;
+            kuro = SessionManager.Instance.player1Controller.gameObject;
+        }
         private void RemoveCard(GameObject draggedObject) {
             draggedObject.TweenLocalScale(Vector3.zero, 0.3f);
             draggedObject.transform.parent = null;

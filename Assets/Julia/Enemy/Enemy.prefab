@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userCharacterType: 2
-  hp: 0
+  _hp:
+    m_InternalValue: 0
   maxHp: 0
   characteristicName: 
   status:
@@ -110,7 +111,7 @@ MonoBehaviour:
     bleeding: 0
   damage: 0
   appearance: {fileID: 0}
-  enemyData: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: b3284ed1a4a063d42af49bc5627c64a3, type: 2}
 --- !u!114 &3290683650375515221
 MonoBehaviour:
   m_ObjectHideFlags: 0

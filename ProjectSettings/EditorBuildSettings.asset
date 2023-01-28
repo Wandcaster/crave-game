@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight.unity
     guid: 810ce23ac2e78ee4ea8c69ac32f4f7bb
+  - enabled: 1
+    path: Assets/Scenes/DuelScreen.unity
+    guid: f9ea9cac2c822e2469f8784873306fd4
   m_configObjects: {}

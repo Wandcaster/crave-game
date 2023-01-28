@@ -18,6 +18,8 @@ namespace UI {
         private void Start()
         {
             instance = this;
+            kuro=SessionManager.Instance.player0Controller.gameObject;
+            shiro=SessionManager.Instance.player1Controller.gameObject;
         }
         /**
          * This emits the OnEndTurn event, this function is called by the End Turn button (only if it is the current

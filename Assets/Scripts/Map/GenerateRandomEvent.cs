@@ -51,6 +51,9 @@ public class GenerateRandomEvent : MonoBehaviour
             case EventType.rest:
                 DialogManager.Instance.TriggerRestEventServerRpc();
                 break;
+            case EventType.fight:
+                NetworkManager.Singleton.SceneManager.LoadScene("DuelScreen", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                break;
             default:
                 Debug.Log("unhandled event type:" + eventType);
                 break;

@@ -4,7 +4,17 @@ using Unity.Netcode;
 public class Characteristics : NetworkBehaviour
 {
     public PlayableCharacterType userCharacterType;
-    public Observable<int> hp;
+    public NetworkVariable<int> _hp= new NetworkVariable<int>();
+    public int hp 
+    {
+        get { return _hp.Value; }
+        set { SetHPServerRpc(value); }
+    }
+    [ServerRpc(RequireOwnership =false)]
+    private void SetHPServerRpc(int newHpValue)
+    {
+        _hp.Value= newHpValue;
+    }
     public int maxHp;
     public string characteristicName;
 
@@ -14,10 +24,10 @@ public class Characteristics : NetworkBehaviour
     public Characteristics() 
     {
         status = new StatusEffects();
-        maxHp = hp.Get();
+        maxHp = hp;
     }
     public bool IsAlive() {
-        return hp.Get() > 0;
+        return hp> 0;
     }
     
     //returns true is target is alive, returns false if target is dead
@@ -34,7 +44,7 @@ public class Characteristics : NetworkBehaviour
                 status.shield = 0;
             }
         }
-        hp.Set(hp.Get() - damage);
+        hp =(hp - damage);
         return IsAlive();
     }
 

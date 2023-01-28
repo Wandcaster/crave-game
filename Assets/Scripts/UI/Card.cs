@@ -23,8 +23,8 @@ namespace UI {
         public void PlayCard(Characteristics target, PlayerController source)
         {
             Debug.Log("Energy" + source.energy + "|:" + cardData.useCosts);
-            if (source.energy.Get() - cardData.useCosts < 0) return;
-            source.energy.Set(source.energy.Get()- cardData.useCosts);
+            if (source.energy - cardData.useCosts < 0) return;
+            source.energy=(source.energy - cardData.useCosts);
 
             foreach (var effect in cardData.effect)
             {

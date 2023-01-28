@@ -36,10 +36,20 @@ public class EnemyController : EnemyBehaviour
     private void RandomAttack()
     {
         EffectData effect= Attacks[UnityEngine.Random.Range(0,Attacks.Count)];
-        Characteristics target;
+        Characteristics target=null;
         if (EnemyManager.Instance.targetPriority != null) target = EnemyManager.Instance.targetPriority;
-        else target = FightController.Instance.playerControllers[UnityEngine.Random.Range(0, FightController.Instance.playerControllers.Count)];
-
+        else
+        {
+            switch (UnityEngine.Random.Range(0,1))
+            {
+                case 0:
+                    target = SessionManager.Instance.player0Controller;
+                    break;
+                case 1:
+                    target= SessionManager.Instance.player1Controller;
+                    break;
+            }
+        }
         //Debug.Log(effect);
         //Debug.Log(target.name);
         effect.act.ApplyEffect(target, this, effect.strength);
@@ -53,7 +63,7 @@ public class EnemyController : EnemyBehaviour
         transform.localScale = enemyData.scale;
         //transform.position = enemyData.position;
         //GetComponent<SpriteRenderer>().sprite = enemyData.appearance;
-        hp.Set(maxHp);
+        hp = (maxHp);
     }
     private void OnDisable()
     {

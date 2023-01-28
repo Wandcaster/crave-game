@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SessionManager : NetworkSingleton<SessionManager>
 {
@@ -25,6 +26,16 @@ public class SessionManager : NetworkSingleton<SessionManager>
         DontDestroyOnLoad(this);
         networkManager.OnServerStarted += ServerStart;
         networkManager.OnClientDisconnectCallback += ServerStop;
+        SceneManager.sceneLoaded += InitForPlayerSelectScene;
+    }
+    private void InitForPlayerSelectScene(Scene arg0, LoadSceneMode arg1)
+    {
+        if (arg0.name.Equals("PlayerSelect"))
+        {
+            PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
+            player0Controller = playerControllers[1];
+            player1Controller= playerControllers[0];
+        }
     }
     private void ServerStart()
     {

@@ -3,6 +3,7 @@ using Newtonsoft.Json.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UI;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,16 +22,18 @@ public class GameLoopController : Singleton<GameLoopController>
     }
     private void Start()
     {
+        localPlayer = SessionManager.Instance.player0Controller;
+        onlinePlayer= SessionManager.Instance.player1Controller;
         fightState = FightStates.PlayerTurn;
         FightState().Forget();
     }
 
     private void SubscribeToUI()
     {
-        localPlayer.hp.onChange += (old, newValue) => { fightUIController.SetHp(localPlayer.userCharacterType, newValue, localPlayer.maxHp); };
-        onlinePlayer.hp.onChange += (old, newValue) => { fightUIController.SetHp(onlinePlayer.userCharacterType, newValue, onlinePlayer.maxHp); };
-        localPlayer.energy.onChange += (old, newValue) => { fightUIController.SetEnergy(localPlayer.userCharacterType, newValue); };
-        onlinePlayer.energy.onChange += (old, newValue) => { fightUIController.SetEnergy(onlinePlayer.userCharacterType, newValue); };
+        //localPlayer.hp.onChange += (old, newValue) => { fightUIController.SetHp(localPlayer.userCharacterType, newValue, localPlayer.maxHp); };
+        //onlinePlayer.hp.onChange += (old, newValue) => { fightUIController.SetHp(onlinePlayer.userCharacterType, newValue, onlinePlayer.maxHp); };
+        //localPlayer.energy.onChange += (old, newValue) => { fightUIController.SetEnergy(localPlayer.userCharacterType, newValue); };
+        //onlinePlayer.energy.onChange += (old, newValue) => { fightUIController.SetEnergy(onlinePlayer.userCharacterType, newValue); };
 
         fightUIController.OnCardPlayed += (card, target, source) =>
         {
@@ -46,7 +49,7 @@ public class GameLoopController : Singleton<GameLoopController>
 
     public async UniTask FightState()
     {
-        while(localPlayer.hp.Get()>0&&onlinePlayer.hp.Get()>0)
+        while(localPlayer.hp >0&&onlinePlayer.hp >0)
         {
             switch (fightState)
             {
@@ -83,7 +86,7 @@ public class GameLoopController : Singleton<GameLoopController>
     }
     private void LoadMapScene()
     {
-        SceneManager.LoadScene(mapSceneName);
+        NetworkManager.Singleton.SceneManager.LoadScene(mapSceneName,LoadSceneMode.Single);
     }
     public void CheckEnemysLife()
     {

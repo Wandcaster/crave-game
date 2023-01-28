@@ -123,97 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &69689536
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 69689539}
-  - component: {fileID: 69689538}
-  - component: {fileID: 69689537}
-  m_Layer: 0
-  m_Name: Player1
-  m_TagString: Self
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &69689537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69689536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3692285260
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &69689538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69689536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15844a9efa1f73d4396002b94c4071f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 1
-  maxHp: 10
-  characteristicName: Nico
-  status:
-    weakness: 0
-    vulnerability: 0
-    shield: 0
-    strength: 0
-    bleeding: 0
-  energy: 0
-  maxEnergy: 3
-  drawCardsInHand: 4
-  turnEnded: 0
-  deck:
-  - {fileID: 11400000, guid: ec3f66a5696d6214981aa819e4b3a7ea, type: 2}
-  - {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
-  - {fileID: 11400000, guid: 156fc9df274828a4ab3846fcf4e63ca4, type: 2}
-  - {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
-  - {fileID: 11400000, guid: e6c6c0b1274327f4aa33b828a22b0bd2, type: 2}
-  - {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
-  - {fileID: 11400000, guid: 7c67264e8f4ca934e9a984bbf03f0659, type: 2}
-  - {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
-  draw: []
-  hand: []
-  discarded: []
-  deckFolder: {fileID: 413712438}
-  cardPrefab: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
-  cardDistance: 3
-  cardPositionY: -4
---- !u!4 &69689539
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69689536}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 413712439}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120248441
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,8 +507,8 @@ MonoBehaviour:
   mainMenuSceneName: MainMenu
   joinCode: 
   seed: 0
-  player0Controller: {fileID: 1886189214}
-  player1Controller: {fileID: 69689538}
+  player0Controller: {fileID: 0}
+  player1Controller: {fileID: 0}
 --- !u!4 &226072798
 Transform:
   m_ObjectHideFlags: 0
@@ -887,37 +796,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372106194}
   m_CullTransparentMesh: 1
---- !u!1 &413712438
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 413712439}
-  m_Layer: 0
-  m_Name: Deck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &413712439
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413712438}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 69689539}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,37 +1013,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &742022738
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 742022739}
-  m_Layer: 0
-  m_Name: Deck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &742022739
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742022738}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1886189215}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &746472411
 GameObject:
@@ -1969,97 +1816,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728994146}
   m_CullTransparentMesh: 1
---- !u!1 &1886189212
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1886189215}
-  - component: {fileID: 1886189214}
-  - component: {fileID: 1886189213}
-  m_Layer: 0
-  m_Name: Player0
-  m_TagString: Self
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1886189213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886189212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1806303140
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &1886189214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886189212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15844a9efa1f73d4396002b94c4071f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 1
-  maxHp: 10
-  characteristicName: Nico
-  status:
-    weakness: 0
-    vulnerability: 0
-    shield: 0
-    strength: 0
-    bleeding: 0
-  energy: 0
-  maxEnergy: 3
-  drawCardsInHand: 4
-  turnEnded: 0
-  deck:
-  - {fileID: 11400000, guid: ec3f66a5696d6214981aa819e4b3a7ea, type: 2}
-  - {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
-  - {fileID: 11400000, guid: 156fc9df274828a4ab3846fcf4e63ca4, type: 2}
-  - {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
-  - {fileID: 11400000, guid: e6c6c0b1274327f4aa33b828a22b0bd2, type: 2}
-  - {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
-  - {fileID: 11400000, guid: 7c67264e8f4ca934e9a984bbf03f0659, type: 2}
-  - {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
-  draw: []
-  hand: []
-  discarded: []
-  deckFolder: {fileID: 742022738}
-  cardPrefab: {fileID: 8661407882224195061, guid: 68228d638b53b5e4b918816d58911839, type: 3}
-  cardDistance: 3
-  cardPositionY: -4
---- !u!4 &1886189215
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886189212}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 742022739}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110480249 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 999527984314296000, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
@@ -2113,13 +1869,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1760961184852989734, guid: b22ad57bdca36e440bc5753df6f79c07, type: 3}
     - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
+      propertyPath: NetworkConfig.ForceSamePrefabs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Prefab
       value: 
-      objectReference: {fileID: 5686269356392182924, guid: de780d81076510540a688e610cbd8f55, type: 3}
+      objectReference: {fileID: 6716866621343882777, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+    - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[1].Prefab
+      value: 
+      objectReference: {fileID: 6236806717293998018, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+    - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[2].Prefab
+      value: 
+      objectReference: {fileID: 8405466735247276495, guid: decb2fe6fbdd9d44089e0d70dfb4568d, type: 3}
     - target: {fileID: 999527984314296002, guid: da7c4aebca3c25b47aa07d28561cac11, type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Override
       value: 0

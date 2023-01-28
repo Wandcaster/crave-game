@@ -24,7 +24,7 @@ public class DealDamage : Effect
                 target.status.shield = 0;
             }
         }
-        target.hp.Set(target.hp.Get()- tempStr) ;
+        target.hp=target.hp - tempStr ;
         target.gameObject.SetActive(target.IsAlive());
         Debug.Log(target+" "+source+" "+tempStr);
     }

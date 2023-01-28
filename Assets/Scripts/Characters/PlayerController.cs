@@ -1,12 +1,21 @@
 using PlayerManagement;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UI;
+using Unity.Netcode;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Characteristics
 {
-    [SerializeField] public Observable<int> energy=new Observable<int>(3);
+    [SerializeField] public NetworkVariable<int> _energy = new NetworkVariable<int>();
+    public int energy
+    {
+        get { return _energy.Value; }
+        set { SetEnergyServerRpc(value); }
+    }
     [SerializeField] public int maxEnergy;
     [SerializeField] public int drawCardsInHand = 3;
     public bool turnEnded=false;
@@ -19,36 +28,44 @@ public class PlayerController : Characteristics
     [SerializeField] private float cardDistance = 3.0f;
     [SerializeField] private float cardPositionY = -4;//middle card position
 
+    [ServerRpc(RequireOwnership =false)]
+    public void SetEnergyServerRpc(int newValue)
+    {
+        _energy.Value= newValue;
+    }
     private void Awake()
     {
-        energy.Set(maxEnergy);
-        hp.Set(maxHp);
-        DontDestroyOnLoad(gameObject);
+        SubscribeToUI();
+        
     }
     private void Start()
     {
-        InitForFightScene();
+        DontDestroyOnLoad(gameObject);
+        energy = (maxEnergy);
+        hp = (maxHp);
+        _hp.OnValueChanged.Invoke(0, maxHp);
+        _energy.OnValueChanged.Invoke(0, maxEnergy);
     }
-
-    private void InitForFightScene()
+    public void SubscribeToUI()
     {
-        //draw = new List<UI.Card>();
-        //for (int i = 0; i < deck.Count; i++)
-        //{
-        //    GameObject temp = Instantiate(cardPrefab, deckFolder.transform);
-        //    UI.Card tempCard= temp.GetComponentInChildren<UI.Card>();
-        //    draw.Add(tempCard);
-        //    draw.LastOrDefault().cardData = deck[i];
-        //    //Uzupe³niæ opis kart
-        //}
-        //FightController.Instance.HandDraw.AddListener(DrawCard);
-        //FightController.Instance.EndTurn.AddListener(EndTurn);
+        _hp.OnValueChanged+= (old, newValue) => { SetHp( newValue, maxHp); };
+        _energy.OnValueChanged += (old, newValue) => { SetEnergy(newValue); };
+    }
+    public void SetHp(int currentHp, int maxHp)
+    {
+        var hpBar = transform.GetComponentInChildren<HealthBar>();
+        hpBar.SetHp(currentHp, maxHp);
+    }
+    public void SetEnergy(int newValue)
+    {
+        var txt = transform.GetComponentInChildren<TMP_Text>();
+        txt.SetText(newValue.ToString());
     }
 
     public void DrawCard()
     {
         turnEnded = false;
-        energy.Set(maxEnergy);
+        energy = (maxEnergy);
         for (int i = 0; i < hand.Count; i++) hand[i].gameObject.SetActive(false);
 
         discarded.AddRange(hand);
