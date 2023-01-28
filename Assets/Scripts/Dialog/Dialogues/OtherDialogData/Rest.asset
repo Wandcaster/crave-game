@@ -13,24 +13,26 @@ MonoBehaviour:
   m_Name: Rest
   m_EditorClassIdentifier: 
   title: Rest
-  initialTalk: You find a save place with bonfire.
+  initialTalk: You find a save place with bonfire
   option1:
-    playerAnswer: Eat breakfast.
-    playerExit: "Your wounds are patching up\r.\n"
+    playerAnswer: Eat breakfast
+    playerExit: 'Your wounds are patching up
+
+'
     effect:
     - effectType: 6
       strength: 3
   option2:
-    playerAnswer: "Sleep beside bonfire\r."
-    playerExit: "You've slept well\r."
+    playerAnswer: "Sleep beside bonfire\r"
+    playerExit: "You've slept well\r"
     effect:
     - effectType: 4
       strength: 2
     - effectType: 9
       strength: 1
   option3:
-    playerAnswer: Search for medicines.
-    playerExit: You've found some medicines to patch youselfs up.
+    playerAnswer: Search for medicines
+    playerExit: You've found some medicines to patch youselfs up
     effect:
     - effectType: 9
       strength: 99

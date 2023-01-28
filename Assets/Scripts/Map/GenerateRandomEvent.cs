@@ -48,6 +48,9 @@ public class GenerateRandomEvent : MonoBehaviour
             case EventType.fullyrandom:
                 DialogManager.Instance.TriggerEventServerRpc();
                 break;
+            case EventType.rest:
+                DialogManager.Instance.TriggerRestEventServerRpc();
+                break;
             default:
                 Debug.Log("unhandled event type:" + eventType);
                 break;

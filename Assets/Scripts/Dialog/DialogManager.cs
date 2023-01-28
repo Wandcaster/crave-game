@@ -9,6 +9,7 @@ public class DialogManager : NetworkSingleton<DialogManager>
     [SerializeField]
     private List<DialogData> dialogList;
     [SerializeField] DialogController dialogController;
+    [SerializeField] private DialogData restEvent;
 
     private void Awake()
     {
@@ -29,6 +30,16 @@ public class DialogManager : NetworkSingleton<DialogManager>
     public void TriggerEventClientRPC()
     {
         dialogController.InitializeDialog(GetRandomEvent());
+    }
+    [ServerRpc]
+    public void TriggerRestEventServerRpc()
+    {
+        TriggerRestEventClientRPC();
+    }
+    [ClientRpc]
+    public void TriggerRestEventClientRPC() 
+    {
+        dialogController.InitializeDialog(restEvent);
     }
     public bool EventIsRunning()
     {

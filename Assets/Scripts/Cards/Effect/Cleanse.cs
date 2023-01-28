@@ -5,9 +5,9 @@ public class Cleanse : Effect
 {
     public override void ApplyEffect(Characteristics target, Characteristics source, int efficiency)
     {
-        target.status.bleeding = -efficiency;
-        target.status.vulnerability= -efficiency;
-        target.status.weakness= -efficiency;
+        target.status.bleeding -= efficiency;
+        target.status.vulnerability-= efficiency;
+        target.status.weakness-= efficiency;
 
         if (target.status.strength < 0)
         {
