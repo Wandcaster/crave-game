@@ -13,25 +13,25 @@ MonoBehaviour:
   m_Name: "B\xF3jka szkolna"
   m_EditorClassIdentifier: 
   title: 
-  initialTalk: "Id\u0105c korytarzem zaczepia Ci\u0119 starszy kolega, kotry chc\u0119
-    zabra\u0107 Ci kanapki."
+  initialTalk: While walking down the corridor, you are approached by a bully who
+    wants to take you sandwitches
   option1:
-    playerAnswer: Uciekacie
-    playerExit: "Zostajecie z\u0142apani i pobici"
+    playerAnswer: (Run away)
+    playerExit: (He caugh and beat you up)
     effect:
     - effectType: 0
       strength: 4
   option2:
-    playerAnswer: "Podejmujecie walk\u0119."
-    playerExit: "Przegrywacie ale czujecie si\u0119 silniejsi "
+    playerAnswer: (Take the fight)
+    playerExit: (You loose, but you feel stronger)
     effect:
     - effectType: 4
       strength: 2
     - effectType: 0
       strength: 2
   option3:
-    playerAnswer: Oddajecie kanapki.
-    playerExit: Burczy wam w brzuchu.
+    playerAnswer: (You give back sandwitches)
+    playerExit: (Your belly rumbles)
     effect:
     - effectType: 1
       strength: 2

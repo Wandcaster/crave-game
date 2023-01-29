@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: Burza
   m_EditorClassIdentifier: 
   title: 
-  initialTalk: "Czujecie spadaj\u0105cy deszcz"
+  initialTalk: You feel falling rain
   option1:
-    playerAnswer: (Ignorujesz deszcz)
-    playerExit: (Dostajecie hipotermii)
+    playerAnswer: (Ignore rain)
+    playerExit: (You get hypothermia)
     effect:
     - effectType: 2
       strength: 2
   option2:
-    playerAnswer: (Uciekasz pod drzewo)
-    playerExit: "(Piorun trafia drzewo, pod kt\xF3rym stoicie)"
+    playerAnswer: (Hide under the tree)
+    playerExit: (Thunder hit tree you're standing by)
     effect:
     - effectType: 0
       strength: 3
   option3:
-    playerAnswer: (Poszukujecie schronienia)
-    playerExit: "Udaje wam si\u0119 znale\u017A\u0107 schronienie"
+    playerAnswer: (Search for shelter)
+    playerExit: (You found a shelter)
     effect:
     - effectType: 6
       strength: 1

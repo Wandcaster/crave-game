@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf06a6989b668fe46a2f9cf5ef021d1e, type: 3}
   m_Name: Paranoia
   m_EditorClassIdentifier: 
-  initialTalk: "Odczuwacie nieuzasadniony niepok\xF3j, czujecie, \u017Ce co\u015B
-    jest za wami."
+  title: 
+  initialTalk: (You feel unjustified anxiety, you feel that something is behind you.)
   option1:
-    playerAnswer: "Rozgl\u0105dacie si\u0119"
-    playerExit: "Zaczynacie ucieka\u0107 przed czarn\u0105 mg\u0142\u0105"
+    playerAnswer: (You look around)
+    playerExit: (You start running away from the black mist)
     effect:
     - effectType: 1
       strength: 2
   option2:
-    playerAnswer: "(Oddychacie g\u0142\u0119boko)"
-    playerExit: "Czujecie \u017Car w p\u0142ucach"
+    playerAnswer: (You start breathing deep)
+    playerExit: (You feel the heat in your lungs)
     effect:
     - effectType: 2
       strength: 1
   option3:
-    playerAnswer: Wstrzymujecie oddech
-    playerExit: "Mg\u0142a was poch\u0142ania ale nic was nie robi."
+    playerAnswer: (You hold your breath)
+    playerExit: (The fog absorbs you but does nothing to you)
     effect: []

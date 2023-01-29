@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf06a6989b668fe46a2f9cf5ef021d1e, type: 3}
+  m_Name: Nightmare
+  m_EditorClassIdentifier: 
+  title: 
+  initialTalk: (Nightmare wakes you up)
+  option1:
+    playerAnswer: (You try to fall asleep)
+    playerExit: (You barely managed to fall asleep, but you still feel sleepy)
+    effect:
+    - effectType: 1
+      strength: 2
+    - effectType: 2
+      strength: 2
+  option2:
+    playerAnswer: (You stay vigilant)
+    playerExit: (You feel weak, but nothing besides that happens)
+    effect:
+    - effectType: 1
+      strength: 3
+    - effectType: 4
+      strength: 1
+  option3:
+    playerAnswer: (Try to forget about nightmare)
+    playerExit: (In this time you start to read a book)
+    effect:
+    - effectType: 1
+      strength: 3
+    - effectType: 3
+      strength: 6
