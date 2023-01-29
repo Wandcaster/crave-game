@@ -417,6 +417,7 @@ MonoBehaviour:
   localPlayer: {fileID: 0}
   onlinePlayer: {fileID: 0}
   fightUIController: {fileID: 1444195648}
+  cardContainer: {fileID: 1090714392}
   mapSceneName: Map
 --- !u!1 &543169599 stripped
 GameObject:
@@ -1331,8 +1332,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1444195648}
-        m_TargetAssemblyTypeName: UI.FightUIController, Assembly-CSharp
+      - m_Target: {fileID: 438523292}
+        m_TargetAssemblyTypeName: GameLoopController, Assembly-CSharp
         m_MethodName: EndTurn
         m_Mode: 1
         m_Arguments:

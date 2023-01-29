@@ -7,13 +7,14 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameLoopController : Singleton<GameLoopController>
+public class GameLoopController : NetworkSingleton<GameLoopController>
 {
     public FightStates fightState;
     [SerializeField] EnemyManager enemyManager;
     public PlayerController localPlayer;
     public PlayerController onlinePlayer;
     [SerializeField] FightUIController fightUIController;
+    [SerializeField] CardContainer cardContainer;
     private int cardAddCount = 5;
     public string mapSceneName;
     private void Awake()
@@ -22,10 +23,30 @@ public class GameLoopController : Singleton<GameLoopController>
     }
     private void Start()
     {
-        localPlayer = SessionManager.Instance.player0Controller;
-        onlinePlayer= SessionManager.Instance.player1Controller;
-        fightState = FightStates.PlayerTurn;
+        if(IsHost)
+        {
+            localPlayer = SessionManager.Instance.player0Controller;
+            onlinePlayer = SessionManager.Instance.player1Controller;
+        }
+        else
+        {
+            localPlayer = SessionManager.Instance.player1Controller;
+            onlinePlayer = SessionManager.Instance.player0Controller;
+
+        }
+        //cardContainer.hostCharacter = localPlayer.userCharacterType;
+
+         fightState = FightStates.PlayerTurn;
         FightState().Forget();
+    }
+    
+    public void EndTurn()
+    {
+        localPlayer.EndTurnServerRpc(true);
+        if (onlinePlayer.turnEnded.Value && localPlayer.turnEnded.Value)
+        {
+            fightUIController.EndTurn();
+        }
     }
 
     private void SubscribeToUI()
@@ -42,7 +63,7 @@ public class GameLoopController : Singleton<GameLoopController>
              * or if the target isnt suitable, OnCardPLayed will not be called
              */
 
-            card.PlayCard(target.GetComponent<Characteristics>(), source);
+            card.PlayCard(target.GetComponent<Characteristics>(), localPlayer);
             Debug.Log($"Played card {card.cardData.cardName} against {target} who is {LayerMask.LayerToName(target.layer)}");
         };
     }
@@ -55,14 +76,14 @@ public class GameLoopController : Singleton<GameLoopController>
             {
                 case FightStates.PlayerTurn:
                     await KeepAddingCards();
+                    await UniTask.WaitUntil(() => onlinePlayer.turnEnded.Value && localPlayer.turnEnded.Value);
                     fightState = FightStates.EnemyTurn;
-                    await UniTask.WaitUntil(() => onlinePlayer.turnEnded && localPlayer.turnEnded);
                     localPlayer.status.DecreaseStatuses();
-                    onlinePlayer.status.DecreaseStatuses();
                     break;
                 case FightStates.EnemyTurn:
                     enemyManager.EnemiesActions();
                     cardAddCount = 2;
+                    ResetTurnStatus();
                     fightState = FightStates.PlayerTurn;
                     break;
             }
@@ -70,8 +91,14 @@ public class GameLoopController : Singleton<GameLoopController>
         }
         Debug.Log("GameOver");
     }
+    private void ResetTurnStatus()
+    {
+        localPlayer.EndTurnServerRpc(false);
+        onlinePlayer.EndTurnServerRpc(false);
+    }
     private async UniTask KeepAddingCards()
     {
+        Debug.Log("KeepAddingCard");
         var random = new System.Random();
         for (int i = 0; i < cardAddCount; ++i)
         {

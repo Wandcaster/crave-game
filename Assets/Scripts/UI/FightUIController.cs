@@ -26,7 +26,6 @@ namespace UI {
          * host's turn
          */
         public void EndTurn() {
-            if (cardsInHandContainer.isHostsTurn)
                 OnEndTurn?.Invoke();
         }
         

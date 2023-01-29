@@ -1054,6 +1054,7 @@ GameObject:
   - component: {fileID: 888102992}
   - component: {fileID: 888102991}
   - component: {fileID: 888102990}
+  - component: {fileID: 888102993}
   m_Layer: 0
   m_Name: MapCharacteristics
   m_TagString: Untagged
@@ -1090,16 +1091,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userCharacterType: 2
-  hp:
-    value: 0
+  _hp:
+    m_InternalValue: 0
   maxHp: 0
   characteristicName: Map
-  status:
-    weakness: 0
-    vulnerability: 0
-    shield: 0
-    strength: 0
-    bleeding: 0
+  status: {fileID: 888102993}
 --- !u!4 &888102992
 Transform:
   m_ObjectHideFlags: 0
@@ -1115,6 +1111,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &888102993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888102989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3463bbd73c57d641b97b34628d7a95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weakness:
+    m_InternalValue: 0
+  vulnerability:
+    m_InternalValue: 0
+  shield:
+    m_InternalValue: 0
+  strength:
+    m_InternalValue: 0
+  bleeding:
+    m_InternalValue: 0
 --- !u!1 &894761187
 GameObject:
   m_ObjectHideFlags: 0

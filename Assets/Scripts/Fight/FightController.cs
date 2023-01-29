@@ -42,7 +42,7 @@ public class FightController : NetworkSingleton<FightController>
     {
         foreach (var player in playerControllers)
         {
-            if (player.turnEnded == false) return; //Zmieniaæ sieciowo bool na graczach
+            if (player.turnEnded.Value == false) return; //Zmieniaæ sieciowo bool na graczach
         }
         foreach (var player in playerControllers) player.status.DecreaseStatuses();
         EnemyTurn.Invoke();

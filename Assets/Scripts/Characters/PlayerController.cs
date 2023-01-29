@@ -18,7 +18,7 @@ public class PlayerController : Characteristics
     }
     [SerializeField] public int maxEnergy;
     [SerializeField] public int drawCardsInHand = 3;
-    public bool turnEnded=false;
+    public NetworkVariable <bool> turnEnded= new NetworkVariable<bool>(false);
     [SerializeField] public List<CardData> deck;//player cards
     [SerializeField] public List<UI.Card> draw;//available to draw
     [SerializeField] public List<UI.Card> hand;//cards in hand
@@ -46,6 +46,7 @@ public class PlayerController : Characteristics
         _hp.OnValueChanged.Invoke(0, maxHp);
         _energy.OnValueChanged.Invoke(0, maxEnergy);
     }
+
     public void SubscribeToUI()
     {
         _hp.OnValueChanged+= (old, newValue) => { SetHp( newValue, maxHp); };
@@ -64,7 +65,7 @@ public class PlayerController : Characteristics
 
     public void DrawCard()
     {
-        turnEnded = false;
+        turnEnded.Value = false;
         energy = (maxEnergy);
         for (int i = 0; i < hand.Count; i++) hand[i].gameObject.SetActive(false);
 
@@ -102,8 +103,9 @@ public class PlayerController : Characteristics
             draw[randomIndex] = temp;
         }
     }
-    public void EndTurn()
+    [ServerRpc(RequireOwnership = false)]
+    public void EndTurnServerRpc( bool newValue)
     {
-        turnEnded= true;
+        turnEnded.Value= newValue;
     }
 }
