@@ -23,7 +23,6 @@ public class Characteristics : NetworkBehaviour
 
     public Characteristics() 
     {
-        status = new StatusEffects();
         maxHp = hp;
     }
     public bool IsAlive() {
@@ -33,15 +32,15 @@ public class Characteristics : NetworkBehaviour
     //returns true is target is alive, returns false if target is dead
     public bool TakeDamage(int damage)
     {
-        if (status.vulnerability !=0) damage = (int)(damage * StatusEffects.vulnerabilityEfficiency);
+        if (status.vulnerability.Value != 0) damage = (int)(damage * StatusEffects.vulnerabilityEfficiency);
 
-        if (status.shield != 0)
+        if (status.shield.Value != 0)
         {
-            if(status.shield > damage) { status.shield -= damage;}
+            if(status.shield.Value > damage) { status.shield.Value -= damage;}
             else
             {
-                damage -= status.shield;
-                status.shield = 0;
+                damage -= status.shield.Value;
+                status.shield.Value = 0;
             }
         }
         hp =(hp - damage);
@@ -52,8 +51,8 @@ public class Characteristics : NetworkBehaviour
     protected int CalculateDamage(int damage, float damageMultiplayer=1)
     {
         damage = (int) (damage*damageMultiplayer);
-        damage += status.strength;
-        if (status.weakness != 0) damage = (int)(damage * StatusEffects.weaknessEfficiency);
+        damage += status.strength.Value;
+        if (status.weakness.Value != 0) damage = (int)(damage * StatusEffects.weaknessEfficiency);
 
         return damage;
     }

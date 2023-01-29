@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 6236806717293998031}
   - component: {fileID: 6236806717293998016}
   - component: {fileID: 6236806717293998017}
+  - component: {fileID: 3430381305136087760}
   m_Layer: 7
   m_Name: KuroIcon
   m_TagString: Untagged
@@ -431,17 +432,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userCharacterType: 0
-  hp:
+  _hp:
     m_InternalValue: 0
   maxHp: 10
   characteristicName: Nico
-  status:
-    weakness: 0
-    vulnerability: 0
-    shield: 0
-    strength: 0
-    bleeding: 0
-  energy:
+  status: {fileID: 3430381305136087760}
+  _energy:
     m_InternalValue: 0
   maxEnergy: 3
   drawCardsInHand: 0
@@ -478,6 +474,28 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &3430381305136087760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236806717293998018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3463bbd73c57d641b97b34628d7a95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weakness:
+    m_InternalValue: 0
+  vulnerability:
+    m_InternalValue: 0
+  shield:
+    m_InternalValue: 0
+  strength:
+    m_InternalValue: 0
+  bleeding:
+    m_InternalValue: 0
 --- !u!1 &6236806717652268491
 GameObject:
   m_ObjectHideFlags: 0
