@@ -13,23 +13,23 @@ MonoBehaviour:
   m_Name: Dzien Dziecka
   m_EditorClassIdentifier: 
   title: 
-  initialTalk: "Sprzedawczyni ze sklepiku szkolnego daje Ci kupon z okazji dnia dziecka.
-    Wybierz swoj\u0105 s\u0142odycz. "
+  initialTalk: The shop assistant at the school shop gives you a children's day voucher.
+    Choose your sweet.
   option1:
-    playerAnswer: "Cukierek mocy(Si\u0142a)"
-    playerExit: Odchodzisz zadowolony
+    playerAnswer: Sweet of power
+    playerExit: (You leave satisfied)
     effect:
     - effectType: 4
       strength: 2
   option2:
-    playerAnswer: "Cukierek wytrzyma\u0142o\u015Bci"
-    playerExit: Odchodzisz zadowolony
+    playerAnswer: Sweet of sturdiness
+    playerExit: (You leave satisfied)
     effect:
     - effectType: 3
       strength: 6
   option3:
-    playerAnswer: Cukierek leczenia
-    playerExit: Odchodzisz zadowolony
+    playerAnswer: Sweet of healing
+    playerExit: (You leave satisfied)
     effect:
     - effectType: 6
       strength: 3
