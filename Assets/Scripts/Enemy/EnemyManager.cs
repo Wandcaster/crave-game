@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UI;
+using Unity.Netcode;
 using UnityEngine;
 
 public class EnemyManager : NetworkSingleton<EnemyManager>
@@ -17,6 +18,7 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
     }
     public void RespawnEnemies(int count)
     {
+        if (!SessionManager.Instance.GetComponent<NetworkObject>().IsOwner) return;
         for (int i = 0; i < count; i++)
         {
             enemyControllers.Add(enemyCupboard.AddEnemy(avalableEnemys[Random.Range(0, avalableEnemys.Count)]));

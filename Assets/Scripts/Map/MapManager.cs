@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MapManager : NetworkBehaviour
+public class MapManager : NetworkSingleton<MapManager>
 {
-    public static MapManager Instance { get; private set; }
 
     [SerializeField] public GameObject startPosition;
     [SerializeField] public GameObject bossTilePosition;
@@ -24,24 +24,10 @@ public class MapManager : NetworkBehaviour
 
     public float distanceY;//wysokosc wzwyz dla kazdego tile'a
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
         tiles.Add(startPosition.GetComponent<GenerateRandomEvent>());
         tiles.Add(bossTilePosition.GetComponent<GenerateRandomEvent>());
         distanceY = bossTilePosition.transform.position.y - startPosition.transform.position.y;//radius for each tile is 0.5; distance for all tiles
@@ -55,9 +41,31 @@ public class MapManager : NetworkBehaviour
         afterGeneration = false;
         finishedRouteCounter = 0;
         GenerateMap();
+        //SceneManager.sceneLoaded += OnMapSceneLoaded;
     }
-
-
+    private void Awake()
+    {
+        if(FindObjectsOfType<MapManager>().Length>1)
+        {
+            DestroyImmediate(gameObject);
+        }
+    }
+    //private void OnMapSceneLoaded(Scene arg0, LoadSceneMode arg1)
+    //{
+    //    OnMapSceneLoadedServerRpc(arg0.name);
+    //}
+    //[ServerRpc(RequireOwnership =false)]
+    //private void OnMapSceneLoadedServerRpc(string sceneName)
+    //{
+    //    if(sceneName == "Map")
+    //    {
+    //        MapManager[] mapManagers = GetComponents<MapManager>();
+    //        for (int i = 0; i < mapManagers.Length; i++)
+    //        {
+    //            if (mapManagers[i] != this) DestroyImmediate(mapManagers[i]);
+    //        }
+    //    }
+    //}
 
     private void GenerateMap()
     {
@@ -115,6 +123,16 @@ public class MapManager : NetworkBehaviour
         //lr.SetPosition();
 
 
+    }
+    [ServerRpc(RequireOwnership =false)]
+    public void SetMapActiveServerRpc(bool status)
+    {
+        SetMapActiveClientRpc(status);
+    }
+    [ClientRpc]
+    public void SetMapActiveClientRpc(bool status)
+    {
+        gameObject.SetActive(status);
     }
 
     private void ChangeTileState(bool state)

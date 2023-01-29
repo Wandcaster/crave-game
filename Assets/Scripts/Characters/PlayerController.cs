@@ -38,6 +38,11 @@ public class PlayerController : Characteristics
         SubscribeToUI();
         
     }
+    [ServerRpc(RequireOwnership =false)]
+    public void SetOwnershipServerRpc(ulong value)
+    {
+        GetComponent<NetworkObject>().ChangeOwnership(value);
+    }
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -45,6 +50,7 @@ public class PlayerController : Characteristics
         hp = (maxHp);
         _hp.OnValueChanged.Invoke(0, maxHp);
         _energy.OnValueChanged.Invoke(0, maxEnergy);
+        if (!IsHost) SetOwnershipServerRpc(1);
     }
 
     public void SubscribeToUI()

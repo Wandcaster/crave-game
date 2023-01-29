@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UI;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,17 +26,16 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
     {
         if(IsHost)
         {
-            localPlayer = SessionManager.Instance.player0Controller;
-            onlinePlayer = SessionManager.Instance.player1Controller;
+            localPlayer = SessionManager.Instance.player1Controller;
+            onlinePlayer = SessionManager.Instance.player0Controller;
         }
         else
         {
-            localPlayer = SessionManager.Instance.player1Controller;
-            onlinePlayer = SessionManager.Instance.player0Controller;
-
+            localPlayer = SessionManager.Instance.player0Controller;
+            onlinePlayer = SessionManager.Instance.player1Controller;
         }
-        //cardContainer.hostCharacter = localPlayer.userCharacterType;
-
+        cardContainer.hostCharacter = localPlayer.userCharacterType;
+        cardContainer.currentTurn = localPlayer.userCharacterType;
          fightState = FightStates.PlayerTurn;
         FightState().Forget();
     }
@@ -62,8 +62,7 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
              * This is only executed if the card is usable in the first place - if there isnt enough energy
              * or if the target isnt suitable, OnCardPLayed will not be called
              */
-
-            card.PlayCard(target.GetComponent<Characteristics>(), localPlayer);
+            card.PlayCard(target.GetComponent<Characteristics>(), source);
             Debug.Log($"Played card {card.cardData.cardName} against {target} who is {LayerMask.LayerToName(target.layer)}");
         };
     }
@@ -77,6 +76,7 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
                 case FightStates.PlayerTurn:
                     await KeepAddingCards();
                     await UniTask.WaitUntil(() => onlinePlayer.turnEnded.Value && localPlayer.turnEnded.Value);
+                    new WaitForSeconds(2);//Wait to send end turn message
                     fightState = FightStates.EnemyTurn;
                     localPlayer.status.DecreaseStatuses();
                     break;
@@ -84,12 +84,19 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
                     enemyManager.EnemiesActions();
                     cardAddCount = 2;
                     ResetTurnStatus();
+                    ResetEnergyServerRpc();
                     fightState = FightStates.PlayerTurn;
                     break;
             }
 
         }
         Debug.Log("GameOver");
+    }
+    [ServerRpc(RequireOwnership =false)]
+    private void ResetEnergyServerRpc()
+    {
+        localPlayer.energy = localPlayer.maxEnergy;
+        onlinePlayer.energy = onlinePlayer.maxEnergy;
     }
     private void ResetTurnStatus()
     {
@@ -113,7 +120,13 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
     }
     private void LoadMapScene()
     {
-        NetworkManager.Singleton.SceneManager.LoadScene(mapSceneName,LoadSceneMode.Single);
+        MapManager.Instance.SetMapActiveServerRpc(true);
+        LoadMapSceneServerRpc(); 
+    }
+    [ServerRpc(RequireOwnership = false)]
+    private void LoadMapSceneServerRpc()
+    {
+        NetworkManager.Singleton.SceneManager.LoadScene(mapSceneName, LoadSceneMode.Single);
     }
     public void CheckEnemysLife()
     {

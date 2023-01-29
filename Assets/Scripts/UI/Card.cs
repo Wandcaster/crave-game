@@ -18,7 +18,7 @@ namespace UI {
             cardName.text = cardData.name;
             cost.text = cardData.useCosts.ToString();
             sprite.sprite = cardData.image;
-            cardOwner = SessionManager.Instance.player0Controller;
+            cardOwner = GameLoopController.Instance.localPlayer;
         }
         public void PlayCard(Characteristics target, PlayerController source)
         {

@@ -74,9 +74,9 @@ namespace UI {
          * Set null for no player turn (aka enemy turn)
          * This is responsible for disabling card interactions 
          */
-        public void SetTurn(PlayableCharacterType? playableCharacter) {
-            cardsInHandContainer.currentTurn = playableCharacter;
-        }
+        //public void SetTurn(PlayableCharacterType? playableCharacter) {
+        //    cardsInHandContainer.currentTurn = playableCharacter;
+        //}
 
         /**
          * Set the character the player on this computer is using 

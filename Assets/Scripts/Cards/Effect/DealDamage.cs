@@ -7,25 +7,26 @@ public class DealDamage : Effect
     {
         int tempStr = efficiency;
 
-        tempStr += source.status.strength.Value;
-        if (target.status.vulnerability.Value != 0) tempStr = (int)(tempStr * StatusEffects.vulnerabilityEfficiency);
+        tempStr += source.status.strength;
+        if (target.status.vulnerability != 0) tempStr = (int)(tempStr * StatusEffects.vulnerabilityEfficiency);
         
-        if (source.status.weakness.Value != 0) tempStr= (int)(tempStr* StatusEffects.weaknessEfficiency);
+        if (source.status.weakness != 0) tempStr= (int)(tempStr* StatusEffects.weaknessEfficiency);
 
         //Debug.Log(tempStr);
 
         //damage distribution on shield/hp
-        if (target.status.shield.Value != 0)
+        if (target.status.shield != 0)
         {
-            if (target.status.shield.Value > tempStr) { target.status.shield.Value -= tempStr; tempStr = 0; }
+            if (target.status.shield > tempStr) { target.status.shield -= tempStr; tempStr = 0; }
             else
             {
-                tempStr -= target.status.shield.Value;
-                target.status.shield.Value = 0;
+                tempStr -= target.status.shield;
+                target.status.shield = 0;
             }
         }
         target.hp=target.hp - tempStr ;
-        target.gameObject.SetActive(target.IsAlive());
+        if (!target.IsAlive()) target.DieServerRpc();
         Debug.Log(target+" "+source+" "+tempStr);
     }
+    
 }

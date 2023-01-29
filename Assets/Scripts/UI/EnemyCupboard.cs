@@ -16,10 +16,11 @@ namespace UI {
         }
 
         public EnemyController AddEnemy(EnemyData data) {
+            
             var obj = Instantiate(enemyPrefab, transform);
             //obj.GetComponent<EnemyController>().enemyData = data;
             obj.GetComponent<SpriteRenderer>().sprite = data.appearance;
-            obj.AddComponent<BoxCollider2D>();
+            //obj.AddComponent<BoxCollider2D>();
             enemies.Add(obj);
             AlignEnemies();
             obj.GetComponent<NetworkObject>().Spawn();

@@ -189,7 +189,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310878022 stripped
 GameObject:
@@ -699,7 +699,7 @@ RectTransform:
   m_Children:
   - {fileID: 2026448454}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1109,7 +1109,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &888102993
 MonoBehaviour:
@@ -1123,15 +1123,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3463bbd73c57d641b97b34628d7a95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weakness:
+  _weakness:
     m_InternalValue: 0
-  vulnerability:
+  _vulnerability:
     m_InternalValue: 0
-  shield:
+  _shield:
     m_InternalValue: 0
-  strength:
+  _strength:
     m_InternalValue: 0
-  bleeding:
+  _bleeding:
     m_InternalValue: 0
 --- !u!1 &894761187
 GameObject:
@@ -1813,7 +1813,7 @@ RectTransform:
   m_Children:
   - {fileID: 894761188}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1984,8 +1984,8 @@ Transform:
   m_LocalScale: {x: 0.25, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1683948251}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1159580396
 SpriteRenderer:
@@ -2417,7 +2417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1505373264
 MonoBehaviour:
@@ -2630,8 +2630,9 @@ Transform:
   - {fileID: 310878023}
   - {fileID: 961112625}
   - {fileID: 1117350003}
+  - {fileID: 1159580395}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1683948252
 MonoBehaviour:

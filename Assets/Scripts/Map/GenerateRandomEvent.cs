@@ -52,6 +52,7 @@ public class GenerateRandomEvent : MonoBehaviour
                 DialogManager.Instance.TriggerRestEventServerRpc();
                 break;
             case EventType.fight:
+                MapManager.Instance.SetMapActiveServerRpc(false);
                 NetworkManager.Singleton.SceneManager.LoadScene("DuelScreen", UnityEngine.SceneManagement.LoadSceneMode.Single);
                 break;
             default:

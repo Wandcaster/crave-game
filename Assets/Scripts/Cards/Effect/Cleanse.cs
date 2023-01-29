@@ -5,18 +5,18 @@ public class Cleanse : Effect
 {
     public override void ApplyEffect(Characteristics target, Characteristics source, int efficiency)
     {
-        target.status.bleeding.Value -= efficiency;
-        target.status.vulnerability.Value -= efficiency;
-        target.status.weakness.Value -= efficiency;
+        target.status.bleeding -= efficiency;
+        target.status.vulnerability -= efficiency;
+        target.status.weakness -= efficiency;
 
-        if (target.status.strength.Value < 0)
+        if (target.status.strength < 0)
         {
-            target.status.strength.Value += efficiency;
-            target.status.strength.Value = target.status.strength.Value > 0 ? target.status.strength.Value = 0 : target.status.strength.Value;
+            target.status.strength += efficiency;
+            target.status.strength = target.status.strength > 0 ? target.status.strength = 0 : target.status.strength;
         }
-        target.status.bleeding.Value = target.status.bleeding.Value < 0 ? target.status.bleeding.Value = 0 : target.status.bleeding.Value;
-        target.status.vulnerability.Value = target.status.vulnerability.Value < 0 ? target.status.vulnerability.Value = 0 : target.status.vulnerability.Value;
-        target.status.weakness.Value = target.status.weakness.Value < 0 ? target.status.weakness.Value = 0 : target.status.weakness.Value;
+        target.status.bleeding = target.status.bleeding < 0 ? target.status.bleeding = 0 : target.status.bleeding;
+        target.status.vulnerability = target.status.vulnerability < 0 ? target.status.vulnerability = 0 : target.status.vulnerability;
+        target.status.weakness = target.status.weakness < 0 ? target.status.weakness = 0 : target.status.weakness;
 
 
 
