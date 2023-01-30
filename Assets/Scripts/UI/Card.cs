@@ -30,8 +30,6 @@ namespace UI {
             {
                 effect.act.ApplyEffect(target, source, effect.strength);
             }
-            source.discarded.Add(this);
-            source.hand.Remove(this);
             gameObject.SetActive(false);
         }
 

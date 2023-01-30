@@ -312,7 +312,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 438523289}
-  - component: {fileID: 438523288}
   - component: {fileID: 438523287}
   - component: {fileID: 438523291}
   - component: {fileID: 438523292}
@@ -339,35 +338,6 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &438523288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 438523285}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d3ae45d03e8514dad9b179a1b5bd6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HandDraw:
-    m_PersistentCalls:
-      m_Calls: []
-  PlayerTurn:
-    m_PersistentCalls:
-      m_Calls: []
-  EnemyTurn:
-    m_PersistentCalls:
-      m_Calls: []
-  EndTurn:
-    m_PersistentCalls:
-      m_Calls: []
-  playerControllers:
-  - {fileID: 0}
-  - {fileID: 0}
-  FightState: 0
-  fightUIController: {fileID: 1444195648}
 --- !u!4 &438523289
 Transform:
   m_ObjectHideFlags: 0

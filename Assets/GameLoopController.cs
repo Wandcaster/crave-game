@@ -7,7 +7,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//TODO dodaæ dontdestroy oraz resetowaæ funkcje FightState
 public class GameLoopController : NetworkSingleton<GameLoopController>
 {
     public FightStates fightState;
@@ -74,6 +74,7 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
             switch (fightState)
             {
                 case FightStates.PlayerTurn:
+                    ResetEnergyServerRpc();
                     await KeepAddingCards();
                     await UniTask.WaitUntil(() => onlinePlayer.turnEnded.Value && localPlayer.turnEnded.Value);
                     new WaitForSeconds(2);//Wait to send end turn message
@@ -84,7 +85,6 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
                     enemyManager.EnemiesActions();
                     cardAddCount = 2;
                     ResetTurnStatus();
-                    ResetEnergyServerRpc();
                     fightState = FightStates.PlayerTurn;
                     break;
             }

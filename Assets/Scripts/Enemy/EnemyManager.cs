@@ -13,8 +13,6 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
     private void Start()
     {
         RespawnEnemies(enemyCount);
-        FightController.Instance.EnemyTurn.AddListener(EnemiesActions);
-
     }
     public void RespawnEnemies(int count)
     {
@@ -35,9 +33,7 @@ public class EnemyManager : NetworkSingleton<EnemyManager>
             enemy.status.DecreaseStatuses();
         }
         targetPriority = null;
-        FightController.Instance.HandDraw.Invoke();
-        FightController.Instance.PlayerTurn.Invoke();
-
+        
     }
 }
 //Karty
