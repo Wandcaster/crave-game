@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7301d313b98afef4687e3cd44c9bf96a, type: 3}
-  m_Name: EnemyData
+  m_Name: bossData
   m_EditorClassIdentifier: 
   damage: 1
-  appearance: {fileID: 21300000, guid: e3fb2a99f8217c3429541c1c0b001fb3, type: 3}
-  hp: 15
-  maxHp: 15
+  appearance: {fileID: 21300000, guid: 345809279b9055345a9a28273eabf2f0, type: 3}
+  hp: 60
+  maxHp: 60
   enemyName: 
   Attacks:
   - effectType: 0
+    strength: 4
+  - effectType: 1
     strength: 3
-  scale: {x: 0.44, y: 0.44}
+  - effectType: 2
+    strength: 3
+  scale: {x: 0.25, y: 0.25}
   position: {x: 2.49, y: 2}

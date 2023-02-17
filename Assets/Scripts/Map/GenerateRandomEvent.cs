@@ -55,6 +55,12 @@ public class GenerateRandomEvent : MonoBehaviour
                 MapManager.Instance.SetMapActiveServerRpc(false);
                 NetworkManager.Singleton.SceneManager.LoadScene("DuelScreen", UnityEngine.SceneManagement.LoadSceneMode.Single);
                 break;
+            case EventType.bossfight:
+                SessionManager.Instance.bossFight.Value = true;
+                MapManager.Instance.SetMapActiveServerRpc(false);
+                NetworkManager.Singleton.SceneManager.LoadScene("DuelScreen", UnityEngine.SceneManagement.LoadSceneMode.Single);
+                break;
+
             default:
                 Debug.Log("unhandled event type:" + eventType);
                 break;

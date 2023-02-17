@@ -21,8 +21,12 @@ public class SessionManager : NetworkSingleton<SessionManager>
     public int seed;
     public PlayerController player0Controller; //Local Player
     public PlayerController player1Controller;
+    public NetworkVariable<bool> bossFight = new NetworkVariable<bool>(false);
+
+
     private void Start()
     {
+        Application.targetFrameRate = 60;
         DontDestroyOnLoad(this);
         networkManager.OnServerStarted += ServerStart;
         networkManager.OnClientDisconnectCallback += ServerStop;
@@ -30,11 +34,12 @@ public class SessionManager : NetworkSingleton<SessionManager>
     }
     private void InitForPlayerSelectScene(Scene arg0, LoadSceneMode arg1)
     {
+        SyncSeedClientRpc();
         if (arg0.name.Equals("PlayerSelect"))
         {
             PlayerController[] playerControllers = FindObjectsOfType<PlayerController>();
-            player0Controller = playerControllers[1];
-            player1Controller= playerControllers[0];
+            player0Controller = playerControllers[0];
+            player1Controller= playerControllers[1];
         }
     }
     private void ServerStart()
@@ -47,7 +52,7 @@ public class SessionManager : NetworkSingleton<SessionManager>
     }
     public void StartGame()
     {
-        SyncSeedClientRpc(Random.Range(1, 1000));
+        SyncSeedClientRpc(System.DateTime.Now.Millisecond);
         networkManager.SceneManager.LoadScene(MapSceneName, UnityEngine.SceneManagement.LoadSceneMode.Single);
         
     }
@@ -55,6 +60,11 @@ public class SessionManager : NetworkSingleton<SessionManager>
     private void SyncSeedClientRpc(int seed)
     {
         this.seed = seed;
+        Random.InitState(seed);
+    }
+    [ClientRpc]
+    private void SyncSeedClientRpc()
+    {
         Random.InitState(seed);
     }
 }

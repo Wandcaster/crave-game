@@ -26,13 +26,13 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
     {
         if(IsHost)
         {
-            localPlayer = SessionManager.Instance.player1Controller;
-            onlinePlayer = SessionManager.Instance.player0Controller;
+            localPlayer = SessionManager.Instance.player0Controller;
+            onlinePlayer = SessionManager.Instance.player1Controller;
         }
         else
         {
-            localPlayer = SessionManager.Instance.player0Controller;
-            onlinePlayer = SessionManager.Instance.player1Controller;
+            localPlayer = SessionManager.Instance.player1Controller;
+            onlinePlayer = SessionManager.Instance.player0Controller;
         }
         cardContainer.hostCharacter = localPlayer.userCharacterType;
         cardContainer.currentTurn = localPlayer.userCharacterType;
@@ -77,15 +77,17 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
                     ResetEnergyServerRpc();
                     await KeepAddingCards();
                     await UniTask.WaitUntil(() => onlinePlayer.turnEnded.Value && localPlayer.turnEnded.Value);
-                    new WaitForSeconds(2);//Wait to send end turn message
+                    //EndTurnStatus();
+                    //new WaitForSeconds(8);//Wait to send end turn message
                     fightState = FightStates.EnemyTurn;
-                    localPlayer.status.DecreaseStatuses();
                     break;
                 case FightStates.EnemyTurn:
                     enemyManager.EnemiesActions();
                     cardAddCount = 2;
+                    await UniTask.WaitUntil(() => onlinePlayer.turnEnded.Value == localPlayer.turnEnded.Value);
                     ResetTurnStatus();
                     fightState = FightStates.PlayerTurn;
+                    localPlayer.status.DecreaseStatuses();
                     break;
             }
 
@@ -101,7 +103,12 @@ public class GameLoopController : NetworkSingleton<GameLoopController>
     private void ResetTurnStatus()
     {
         localPlayer.EndTurnServerRpc(false);
-        onlinePlayer.EndTurnServerRpc(false);
+        //onlinePlayer.EndTurnServerRpc(false);
+    }
+    private void EndTurnStatus()
+    {
+        localPlayer.EndTurnServerRpc(true);
+        onlinePlayer.EndTurnServerRpc(true);
     }
     private async UniTask KeepAddingCards()
     {

@@ -18,8 +18,17 @@ namespace UI {
         private void Start()
         {
             instance = this;
-            kuro=SessionManager.Instance.player0Controller.gameObject;
-            shiro=SessionManager.Instance.player1Controller.gameObject;
+            if (SessionManager.Instance.player0Controller.userCharacterType == PlayableCharacterType.Kuro)
+            {
+                kuro = SessionManager.Instance.player0Controller.gameObject;
+                shiro = SessionManager.Instance.player1Controller.gameObject;
+            }
+            else
+            {
+                kuro = SessionManager.Instance.player1Controller.gameObject;
+                shiro = SessionManager.Instance.player0Controller.gameObject;
+            }
+            
         }
         /**
          * This emits the OnEndTurn event, this function is called by the End Turn button (only if it is the current

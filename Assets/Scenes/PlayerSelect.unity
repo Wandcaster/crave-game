@@ -2234,6 +2234,38 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 156fc9df274828a4ab3846fcf4e63ca4, type: 2}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: e6c6c0b1274327f4aa33b828a22b0bd2, type: 2}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c67264e8f4ca934e9a984bbf03f0659, type: 2}
+    - target: {fileID: 6236806717293998016, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
+      propertyPath: deck.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
     - target: {fileID: 6236806717293998017, guid: 4bdf7964ab648d14299bff154b597175, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 969499665
@@ -2303,6 +2335,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShiroIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: aa724db943be6de4fb8298b3e1d5d069, type: 2}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 156fc9df274828a4ab3846fcf4e63ca4, type: 2}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 74574245cb833b540b47f84c4fc0d135, type: 2}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: e6c6c0b1274327f4aa33b828a22b0bd2, type: 2}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 866d15601d94ba84fa208cc2bcfaa774, type: 2}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c67264e8f4ca934e9a984bbf03f0659, type: 2}
+    - target: {fileID: 6716866621343882779, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
+      propertyPath: deck.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: a7fe2ffc38833264a815639b1af809c7, type: 2}
     - target: {fileID: 6716866621343882791, guid: 5c0cc24fbb2b95648b73d0fd508d7a4f, type: 3}
       propertyPath: m_RootOrder
       value: 1

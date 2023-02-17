@@ -1,7 +1,5 @@
 ﻿using System;
-using UnityEditor;
-using UnityEngine;
-using static UnityEditor.Progress;
+
 
 [Serializable]
 public class EffectData

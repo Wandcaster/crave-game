@@ -109,6 +109,7 @@ MonoBehaviour:
   damage: 0
   appearance: {fileID: 0}
   enemyData: {fileID: 11400000, guid: b3284ed1a4a063d42af49bc5627c64a3, type: 2}
+  bossData: {fileID: 11400000, guid: edbf775dcde46d14d8d2f9f94aca20df, type: 2}
 --- !u!114 &3290683650375515221
 MonoBehaviour:
   m_ObjectHideFlags: 0
